@@ -1,0 +1,203 @@
+
+/*Parte para la portada inicial*/
+
+.pag1 {
+    padding: 3px 0 ; 
+    background-image: none; 
+    background-color: rgba(red, green, blue, .5);
+    background-color: #ffffff;
+    
+}
+
+.contenedor {
+    background-image: url('../../Images/Futbol-Topos-FC.png');
+    background-size: cover; /* para cubrir todo el área */
+    background-position: center;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    min-height:800px;
+    color: #ffffff;
+    position: relative; /* Para posicionar el contenido sobre la imagen */
+    background-repeat: no-repeat;
+    isolation: isolate; /*superposicion de los elementos, en este caso, con este mandamos hasta abajo la imagen*/
+    
+    
+}
+
+
+.contenedor::after {
+    content:"" ;
+    position: absolute;
+    inset: 0;
+    z-index:-1;/*Posicion de los onjetos*/
+    background:black ; /*Solo modifica el background sin tocar lo demas*/
+    opacity: .5;
+
+}
+
+/*Finaliza la portada incial. */
+
+/* TITULOS DE LA PORTADA Y EL BOTON*/
+
+#titulo{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+#titulo2{
+    margin-top:10px;
+
+}
+.button{
+    padding: 10px 20px; /* Relleno interno */
+    font-size: 20px; /* Tamaño de fuente */
+    border: none; 
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer; /* Cambio de cursor al pasar el ratón */
+    width: 200px; 
+    height: 50px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top:50px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/*Fin de la portada de plano*/
+
+
+/*Inicio de la barra de navegación*/
+.nav-bar {
+    display: flex;
+    position: sticky;
+    padding-left: 15px;
+}
+
+
+
+#nav-list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav-list li img {
+    height: 70px;
+    width: 80px;
+}
+
+#nav-list li{
+    margin-right: 50px;
+}
+
+#nav-list li a {
+    text-decoration: none;
+    color: #535353;
+}
+
+#nav-list li > a:hover{
+    text-decoration: underline;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+
+/*Fin de la barra de navegacion*/
+
+
+/*Titulo en cuadro blanco*/
+  #tit{
+    text-align: center;
+    background-color:#0693e3;
+    padding: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #fff;
+    font-size: 60px;
+    text-shadow: 1px  0px 0px black,
+               0px  1px 0px black,
+              -1px  0px 0px black,
+               0px -1px 0px black;
+    
+  }
+
+  /*Continua el titulo */
+  
+ 
+  /*Trajetas que se desplazan*/
+.cards-grid {
+  display: flex;
+  grid-gap: 80px;
+  padding-bottom: 60px;
+}
+
+
+.flip-card {
+  width: 420px;
+  height: 320px;
+  perspective: 2000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  transition: all 550ms cubic-bezier(0.1, 0.22, 0.8, 1.13);
+  transform-style: preserve-3d;
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  backface-visibility: hidden;
+}
+.flip-card-front {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.flip-card-back {
+  font-size: 1.25rem;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background-color: #81c236;
+  transform: rotateY(180deg);
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+.Reservas{
+  color: #1e2726;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  background-color: antiquewhite;
+
+}
+
+/* Titulo de las tarjetas*/
+#insana{
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 50px;
+    font-size: 50px;
+    background-color: antiquewhite;
+}
+
+.botones{
+    background-color: white;
+    border-radius: 8px;
+    width: 60%;
+    border-color: #1e2726;
+}
+
