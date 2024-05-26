@@ -1,5 +1,6 @@
 <?php 
     require 'databases.php';
+    
     $id_league = $_POST['id_league'];
 
     $team_name = $_POST['team_name'];

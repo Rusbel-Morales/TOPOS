@@ -9,3 +9,11 @@ body {
 .margin {
     margin-top: 90px;
 }
+
+#msg-color i {
+    color: #FFA500;
+}
+
+#msg-color span {
+    color: #FFA500;
+}

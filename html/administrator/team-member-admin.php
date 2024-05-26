@@ -1,4 +1,6 @@
 <?php
+  require '../../php/cache-control.php';
+
   if(isset($_GET['id_team'])) {
       require '../../php/databases.php';
       $id_team = $_GET['id_team'];
@@ -11,7 +13,6 @@
         $team_name = $row['team_name'];
       }
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +27,9 @@
     <!-- Bootstrap icons  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
-    <!-- external CSS file -->
-    <link rel="stylesheet" href="../../css/league-admin.css">
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/alerts.css">
     
     <!-- JavaScript  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -35,7 +37,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand"> <img src="../../Images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
+          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
@@ -76,5 +78,39 @@
             </div>
         </div>
     </div>
+    <div> 
+      
+    </div>
+
+    <!-- div en el que se insertan las alertas  -->
+    <div id="toastBox" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
+    <!-- Notificaciones JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var notification = '<?php echo $notification; ?>';
+            var notificationType = '<?php echo $notificationType; ?>';
+
+            if (notification) {
+                showToast(notification, notificationType);
+            }
+        });
+
+        function showToast(message, type) {
+            var toastContainer = document.getElementById('toastBox');
+            var toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.classList.add('show', type);
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = message;
+
+            toastContainer.appendChild(toast);
+
+            setTimeout(function() {
+                toast.classList.remove('show');
+                toastContainer.removeChild(toast);
+            }, 5000);
+        }
+    </script>
 </body>
 </html>

@@ -18,7 +18,7 @@
             $description = $descriptions[$i];
             $detail = $details[$i];
 
-            $sql = "INSERT INTO league_rules (description, details, id_league) VALUES ('$description', '$detail', '$id_league')";
+            $sql = "INSERT INTO league_rule (description, details, id_league) VALUES ('$description', '$detail', '$id_league')";
 
             if ($conn->query($sql) === True) {
             }

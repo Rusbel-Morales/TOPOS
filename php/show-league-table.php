@@ -100,15 +100,39 @@
                         </div>
                     </div>
                                         
-                    <!-- Apartado para el botón de eliminación  -->
-                    <form method="post" id="form">
-                        <input type="hidden" name="deleteLeague" value="<?php echo $row['id_league'] ?>">
-                        <button class="btn btn-danger" type="submit"> <i class="bi bi-trash3"> </i> </button>
-                    </form>
+                    <!--Botón de eliminación-->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMember<?php echo $row['id_league']?>"> <i class="bi bi-trash3"> </i> </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteMember<?php echo $row['id_league']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-18 text-dark w-100" id="msg-color"> <i class="bi bi-exclamation-circle-fill"></i> <span> ¡Advertencia! </span> </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                                    </div>
+        
+                                    <!-- Formulario dentro de la ventana emergente  -->
+                                    <form class="text-dark" method="post">
+                                        <div class="form-group mt-3">
+                                            <label for="formGroupExampleInput" class="fw-bold mb-1"> ¿Estás seguro de eliminar a la liga: <?php echo $row['name']?>? </label>
+                                            <div class="row justify-content-center">                             
+                                            </div>
+                                        </div>
+        
+                                        <!--Botones de cerrar ventana emergente y confirmar eliminación de miembro -->
+                                        <div class="modal-footer mt-4 text-center justify-content-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar </button>
+                                            <input type="hidden" name="deleteLeague" value="<?php echo $row['id_league']?>">
+                                            <button type="submit" class="btn btn-success"> Confirmar </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     <!-- El signo de ? indica el comienzo de la cadena de consula, es decir, pasa un parámetro a otra página a través de la URL-->
                     <a class="btn btn-warning" href="team-admin.php?id_league=<?php echo $row['id_league'] ?>"> <i class="bi bi-shield-fill"></i> </i> Administrar equipos </a>
-
-
                 </td>
             </tr>
             <?php

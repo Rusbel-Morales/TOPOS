@@ -7,7 +7,19 @@
         $sql = "UPDATE team SET team_name = '$team_name' WHERE id_team = $id_team";
 
         if ($conn->query($sql) === True) {}
-        else echo "Error al eliminar el equipo" . $conn->error;
+        else echo "Error al actualizar información del equipo" . $conn->error;
+    }
+
+    // Eliminar equipo
+    if (isset($_POST['deleteTeam'])) {
+    $deleleTeam = $_POST['deleteTeam'];
+      
+    $sql = "DELETE FROM team WHERE id_team = $deleleTeam";
+      
+    if ($conn->query($sql) === True) {
+      
+    }
+    else echo "Error al eliminar el equipo: " . $conn->error;
     }
 
     // Obtener todos los equipos relacionados con una liga 
@@ -52,10 +64,37 @@
                         </div>
                     </div>
                 </div>
-                <form method="post" id="form">
-                    <input type="hidden" name="deleteTeam" value="<?php echo $row['id_team']?>">
-                    <button class="btn btn-danger mx-2" type="submit"> <i class="bi bi-trash3"> </i> </button>
-                </form>
+
+                <!--Botón de eliminación-->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMember<?php echo $row['id_team']?>"> <i class="bi bi-trash3"> </i> </button>
+                        
+                <!-- Modal -->
+                <div class="modal fade" id="deleteMember<?php echo $row['id_team']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-18 text-dark w-100" id="msg-color"> <i class="bi bi-exclamation-circle-fill"></i> <span> ¡Advertencia! </span> </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                            </div>
+        
+                            <!-- Formulario dentro de la ventana emergente  -->
+                            <form class="text-dark" method="post">
+                                <div class="form-group mt-3">
+                                    <label for="formGroupExampleInput" class="fw-bold mb-1"> ¿Estás seguro de eliminar al equipo: <?php echo $row['team_name']?>? </label>
+                                    <div class="row justify-content-center">                             
+                                    </div>
+                                </div>
+        
+                                <!--Botones de cerrar ventana emergente y confirmar eliminación de miembro -->
+                                <div class="modal-footer mt-4 text-center justify-content-center">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar </button>
+                                    <input type="hidden" name="deleteTeam" value="<?php echo $row['id_team']?>">
+                                    <button type="submit" class="btn btn-success"> Confirmar </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
                 <a class="btn btn-warning" href="team-member-admin.php?id_team=<?php echo $row['id_team'] ?>"> <i class="bi bi-person-fill"> </i> Administrar miembros </a>
                 <?php $cont++; ?>

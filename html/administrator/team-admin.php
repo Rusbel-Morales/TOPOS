@@ -1,4 +1,6 @@
 <?php
+    require '../../php/cache-control.php';
+    
   // Obtener el nombre de liga a la que corresponde
   if (isset($_GET['id_league'])) {
       require '../../php/databases.php';
@@ -13,17 +15,6 @@
           $league_name = $row['name'];
       }
     }
-      // Eliminar equipo
-    if (isset($_POST['deleteTeam'])) {
-      $deleleTeam = $_POST['deleteTeam'];
-
-      $sql = "DELETE FROM team WHERE id_team = $deleleTeam";
-
-      if ($conn->query($sql) === True) {
-
-      }
-      else echo "Error al eliminar el equipo: " . $conn->error;
-    }
   ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -37,8 +28,8 @@
       <!-- Bootstrap icons  -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
       
-      <!-- external CSS file -->
-      <link rel="stylesheet" href="../../css/league-admin.css">
+      <!-- External CSS file -->
+      <link rel="stylesheet" href="../../css/admin.css">
       
       <!-- JavaScript  -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"> </script>
@@ -46,9 +37,7 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
-          <a class="navbar-brand">
-              <img src="../../Images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador
-          </a>
+          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto">
                   <li class="nav-item">

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/participante.css">
+    <title>Equipos</title>
+</head>
+<body>
+    <section class="formulario">
+        <h4>Formulario de registro de Participante</h4>
+        <form action="form.php" method="POST">
+            <h3>Introduce tu correo electrónico</h3>
+            <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese correo electrónico">
+            <br>
+            <h3>Introduce tu nombre</h3>
+            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingresa tu nombre">
+            <br>
+            <h3>Introduce tu apellido</h3>
+            <input class="controls" type="text" name="apellido" id="apellido" placeholder="Ingresa tu apellido">
+            <br>
+            <h3>Introduce tu edad</h3>
+            <input class="controls" type="number" name="edad" id="edad" placeholder="Ingresa tu edad">
+            <br>
+            <h3>Introduce tu colonia</h3>
+            <input class="controls" type="text" name="colonia" id="colonia" placeholder="Ingresa tu colonia">
+            <br>
+            <h3>Introduce tu teléfono</h3>
+            <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingresa tu teléfono">
+            <br>
+            <h3>Selecciona tu equipo</h3>
+            <select class="controls" name="equipo" id="equipo" placeholder="Selecciona tu equipo">
+            <br>
+            <h3>¿Cómo se enteró de la Liga "Madriguera"?</h3>
+            <select class="controls" name="descubrimiento">
+                <option value="Redes Sociales de la Liga"> Redes Sociales de la Liga</option>
+                <option value="Redes Sociales de Topos FC"> Redes Sociales de Topos FC</option>
+                <option value="Invitacion Directa"> Invitación Directa</option>
+                <option value="Publicidad Fisica"> Publicidad Física</option>
+            </select>
+            <br>
+            <input class="botones" id="enviar" type="submit" value="Registrarse">
+        </form>
+    </section>
+</body>
+</html>
