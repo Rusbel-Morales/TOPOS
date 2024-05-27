@@ -11,15 +11,22 @@
     $state = $_POST['state'];
     $additional = $_POST['additional'];
 
-    $sql = "INSERT INTO team_member (full_name, email, age, cologne, telephone_contact, state, additional, id_team) VALUES ('$full_name', '$email', '$age', '$cologne', '$phone', '$state', '$additional', '$id_team')";
+    // Preparamos la consulta SQL para evitar inyecciones
+    $sql = "INSERT INTO team_member (full_name, email, age, cologne, telephone_contact, state, additional, id_team) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssisissi", $full_name, $email, $age, $cologne, $phone, $state, $additional, $id_team);
 
-    if ($conn->query($sql) === True) {
+    if($stmt->execute()) {
         header("Location: ../html/administrator/team-member-admin.php?id_team=$id_team");
-        exit;
+        exit();
+
+        //Cerramos la consulta preparada
+        $stmt->close();
     }
     else {
-        echo "Error al registrar nuevo miembro: " . $conn->error;
+        echo "Error al registrar nuevo miembro: " . $stmt->error;
     }
     
+    // Cerramos la conexión
     $conn->close();
 ?>

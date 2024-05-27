@@ -3,13 +3,24 @@
         require '../../php/databases.php';
         $id_league = $_GET['id_league'];
 
-        $sql = "SELECT name FROM league WHERE id_league = $id_league";
-        $result = $conn->query($sql);
-        $league_name = "";
+        // Preparamos la consulta SQL para evitar inyecciones
+        $sql = "SELECT name FROM league WHERE id_league = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_league);
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $league_name = $row['name'];
+        if ($stmt->execute()) {
+
+            // Obtenemos el resultado de la declaración preparada
+            $result = $stmt->get_result();
+            $league_name = "";
+    
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_assoc();
+                $league_name = $row['name'];
+            }
+            
+            // Cerramos la declaración preparada
+            $stmt->close();
         }
     }
 ?>

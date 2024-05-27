@@ -4,16 +4,25 @@
     $id_league = $_POST['id_league'];
 
     $team_name = $_POST['team_name'];
-    // Nombre de capitán
-    $name = $_POST['name'];
+
+    // $name = $_POST['name'];
     
-    $sql = "INSERT INTO team (team_name, id_league) VALUES ('$team_name', $id_league)";
-    if ($conn->query($sql) === True) {
+    //Preparamos la consulta SQL para evitar inyecciones
+    $sql = "INSERT INTO team (team_name, id_league) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $team_name, $id_league);
+    
+    if ($stmt->execute()) {
         header("Location: ../html/administrator/team-admin.php?id_league=$id_league");
-        exit;
+        exit();
+
+        // Cerramos la declaración preparada 
+        $stmt->close();
     }
     else {
-            echo "Error al insertar el nuevo equipo: " . $conn->error;
+            echo "Error al insertar el nuevo equipo: " . $stmt->error;
     }
+
+    //Cerramos la conexión
     $conn->close();
 ?>

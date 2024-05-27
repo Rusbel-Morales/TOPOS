@@ -8,19 +8,34 @@
         $date = $_POST['date'];
         $date2 = $_POST['date2'];
 
-        $sql = "UPDATE league SET name='$name', date_i ='$date', date_e = '$date2' WHERE id_league = '$editLeague'"; 
-        if ($conn->query($sql) === True) {}
-        else echo "Error al actualizar información de la liga seleccionado: ". $conn->error;
+        // Preparamos la consulta SQL para evitar inyecciones
+        $sql = "UPDATE league SET name= ?, date_i = ?, date_e = ? WHERE id_league = ?"; 
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssi", $name, $date, $date2, $editLeague);
+        
+        if ($stmt->execute()) {
+
+            // Cerrar la declaración preparara
+            $stmt->close();
+        }
+        else echo "Error al actualizar información de la liga seleccionado: ". $stmt->error;
     }
 
     # Eliminar una fila según sea correpondiente 
     if (isset($_POST['deleteLeague'])) {
         $deleteLeague = $_POST['deleteLeague'];
         
-        $sql = "DELETE FROM league WHERE id_league = $deleteLeague";
-        if ($conn->query($sql) === True) {}
-        
-        else echo "Error al eliminar la liga: " . $conn->error;
+        // Preparamos la consulta SQL para evitar inyecciones
+        $sql = "DELETE FROM league WHERE id_league = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $deleteLeague);
+
+        if ($stmt->execute()) {
+
+            // Cerramos la declaración preparada
+            $stmt->close();
+        }
+        else echo "Error al eliminar la liga: " . $stmt->error;
     }
     
     // Mostrar todo el contenido de la base de datos
@@ -92,7 +107,7 @@
                                     </div>
                                     <div class="modal-footer mt-4">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                                        <input type="hidden" name="editleague" value="<?php echo $row['id_league']?>">
+                                        <input type="hidden" name="editLeague" value="<?php echo $row['id_league']?>">
                                         <button type="submit" class="btn btn-success"> Guardar cambios </button>
                                     </div>
                                 </form>
@@ -165,5 +180,6 @@
         <?php
     }
 
+    // Cerramos la conexión
     $conn->close();
 ?>

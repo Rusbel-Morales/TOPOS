@@ -5,12 +5,22 @@
       require '../../php/databases.php';
       $id_team = $_GET['id_team'];
 
-      $sql = "SELECT team_name FROM team WHERE id_team = {$id_team}";
-      $result = $conn->query($sql);
-      $team_name = "";
-      if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $team_name = $row['team_name'];
+      // Preparamos la consulta SQL para evitar inyecciones
+      $sql = "SELECT team_name FROM team WHERE id_team = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("i", $id_team);
+
+      if ($stmt->execute()) {
+        // Obtenemos el resultado de la declaración preparada
+        $result = $stmt->get_result();
+        $team_name = "";
+        if ($result->num_rows == 1) {
+          $row = $result->fetch_assoc();
+          $team_name = $row['team_name'];
+        }
+
+        // Cerramos la declaración preparada
+        $stmt->close();
       }
     }
 ?>
