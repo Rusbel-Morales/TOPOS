@@ -4,23 +4,33 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM admin WHERE username = '$username'";
+    // Preparamos la consulta SQL para evitar inyecciones
+    $sql = "SELECT * FROM admin WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $username);
 
-    $result = $conn->query($sql);
-    if ($result->num_rows == 1) {
-        $datauser = $result->fetch_assoc();
+    if ($stmt->execute()) {
 
-        if ($password === $datauser['password']) {
-            header("Location: ../html/administrator/league-admin.php");
-            exit;
+        // Obtenemos el resultado de la consulta ejecutada
+        $result = $stmt->get_result();
+        if ($result->num_rows == 1) {
+            $datauser = $result->fetch_assoc();
+    
+            if ($password === $datauser['password']) {
+                header("Location: ../html/administrator/league-admin.php");
+                exit;
+            }
+            else {
+                echo "Usuario o contraseña incorrecta";
+                exit;
+            }
         }
         else {
-            echo "Usuario o contraseña incorrecta";
-            exit;
+            echo "Error total";
         }
-    }
-    else {
-        echo "Rusbel Alejandro Morales Méndez";
+
+        // Cerramos la declaración preparada 
+        $stmt->close();
     }
 
     $conn->close();

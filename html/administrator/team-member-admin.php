@@ -67,6 +67,7 @@
     <div class="container-fluid d-flex flex-column justify-content-center align-items-center margin">
         <div class="col-md-11 bg-white p-4 text-center"> 
             <h2 class="mb-4"> <b> Miembros de equipo </b></h2>
+            <p class="fw-bolder"  style="text-align: left; margin-left: 25px"> <i class="bi bi-star-fill fs-5" style="color: #ffbf00;"> </i> - Left aligned text on all viewport sizes</p>
             <div class="table-responsive">
                 <table class="table table-dark table-bordered align-middle">
                     <thead>
@@ -87,9 +88,6 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div> 
-      
     </div>
 
     <!-- div en el que se insertan las alertas  -->

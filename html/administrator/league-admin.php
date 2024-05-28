@@ -45,7 +45,7 @@
         </div>
       </nav>
 
-      <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+      <div class="container-fluid d-flex justify-content-center align-items-center margin">
         <div class="col-md-11 bg-white p-4 text-center"> 
             <h2 class="mb-4"> <b> Ligas disponibles </b></h2>
             <div class="table-responsive">

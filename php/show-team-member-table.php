@@ -69,7 +69,7 @@ if ($stmt->execute()) {
             ?>
             <tr> 
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>" > <?php echo $cont ?> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['full_name'] ?> </td>
+                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['full_name'] ?> <?php echo ($cont == 1) ? "<i class='bi bi-star-fill fs-5' style='color: #ffbf00; margin-left: 5px'>" : '' ?> </i> </td>
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['email'] ?> </td>
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['age'] ?> </td>
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['cologne'] ?> </td>

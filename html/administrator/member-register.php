@@ -87,7 +87,7 @@
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Edad </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" required>
+                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" min="0" required>
                         </div>
                     </div>
                 </div>
