@@ -38,14 +38,14 @@
     <!-- Bootstrap icons  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- external CSS file -->
+    <!-- External CSS file -->
     <link rel="stylesheet" href="../../css/admin.css">
 
-    <!-- JavaScript  -->
+    <!-- JavaScript - Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <!-- external JavaScript file  -->
-    <script src="../../scripts/submitForm.js"></script>
+    <!-- External JavaScript file  -->
+    <script src="../../scripts/forms/form-team-register.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -67,23 +67,88 @@
       <div class="container-fluid d-flex justify-content-center align-items-center margin">
         <div class="col-8 bg-white p-4 text-center"> 
             <h2> Crear nuevo equipo ⚽ </h2>
-            <form method="post" id="Form" action="../../php/add-team.php">
+            <form method="post" name="form" action="../../php/add-team.php">
                 <input type="hidden" name="id_league" value="<?php echo $id_league; ?>">
-                <div class="form-group mt-3">  
+                <div class="form-group mt-3 input-control">  
                     <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre de equipo </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
                             <input type="text" class="form-control text-center" name="team_name" id="formGroupExampleInput" placeholder="Escriba un nombre de equipo" required autofocus>
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Nombre de capitán </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="text" class="form-control text-center" name="name" id="formGroupExampleInput3" placeholder="Escriba el nombre de un capitan ACTIVO" required>
+                            <input type="text" class="form-control text-center" name="full_name" id="formGroupExampleInput3" placeholder="Escriba el nombre de un capitan ACTIVO" required>
                         </div>
                     </div>
+                    <div class="error"></div>
+                </div>
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput2" class="fw-bold mb-1"> Correo electrónico </label>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <input type="email" class="form-control text-center" name="email" id="formGroupExampleInput2" placeholder="russebel15@example.com">
+                        </div>
+                    </div>
+                    <div class="error"></div>
+                </div>
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> Edad </label>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" min="0">
+                        </div>
+                    </div>
+                    <div class="error"></div>
+                </div>
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> Colonia </label>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <input type="text" class="form-control text-center" name="cologne" id="formGroupExampleInput3" placeholder="Inserte una colonia">
+                        </div>
+                    </div>
+                    <div class="error"></div>
+                </div>
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> Teléfono de contacto (WhatsApp) </label>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <input type="text" class="form-control text-center" name="phone" id="formGroupExampleInput3" placeholder="Inserte un telefono de contacto">
+                        </div>
+                    </div>
+                    <div class="error"></div>
+                </div>
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> Estado </label>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <!-- Campo oculto para enviar el estado  -->
+                            <input type="hidden" name="state" value="Inactivo">
+                            <!-- Campo de entrada deshabilitado  -->
+                            <input type="text" class="form-control text-center" id="formGroupExampleInput3" placeholder="Inactivo" disabled>
+                        </div> 
+                    </div>
+                    <div class="error"></div>
+                </div>
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> ¿Cómo te enteraste de la Liga de Fútbol 5 "Madriguera" ? </label>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <select class="form-control text-center" name="additional" id="">
+                                <option value="" disabled selected> Selecciona una opción </option>
+                                <option value="redes_sociales_de_la_liga"> Redes Sociales de la Liga </option>
+                                <option value="redes_sociales_de_Topos_FC"> Redes Sociales de Topos FC </option>
+                                <option value="invitacion_indirecta"> Invitación Directa </option>
+                                <option value="publicidad_fisica"> Publicidad Física </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="error"></div>
                 </div>
                 <div class="form-group mt-5"> 
                     <div class="row justify-content-center"> 

@@ -89,7 +89,7 @@ if ($stmt->execute()) {
                                 </div>
 
                                 <!-- Formulario dentro de la ventana emergente  -->
-                                <form class="text-dark" method="post">
+                                <form class="text-dark" name="form" method="post" >
                                     <div class="form-group mt-3">
                                         <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre completo </label>
                                         <div class="row justify-content-center"> 

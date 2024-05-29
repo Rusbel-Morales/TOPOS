@@ -17,3 +17,12 @@ body {
 #msg-color span {
     color: #FFA500;
 }
+
+/* Estilos para la verificación de datos del formulario */
+.error {
+    color: #ff0000;
+}
+
+.success {
+    color: #008000;
+}

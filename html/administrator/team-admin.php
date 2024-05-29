@@ -72,6 +72,7 @@
                       <tr>
                           <th> #</th>
                           <th> Nombre de equipo </th>
+                          <th> Nombre de capitán </th>
                           <th> Opciones </th>
                       </tr>
                   </thead>

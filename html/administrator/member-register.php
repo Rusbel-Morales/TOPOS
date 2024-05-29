@@ -35,91 +35,95 @@
     <!-- Bootstrap icons  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- external CSS file -->
+    <!-- External CSS file -->
     <link rel="stylesheet" href="../../css/admin.css">
 
-    <!-- JavaScript  -->
+    <!-- JavaScript - Boostrap  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <!-- external JavaScript file  -->
-    <script src="../../scripts/addRow.js"> </script>
-    <script src="../../scripts/submitForm.js"></script>
+    
+    <!-- External JavaScript file  -->
+    <script src="../../scripts/forms/form-member-register.js"> </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand"> <i class="bi bi-file-text"></i> Registro de miembros </a>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item mx-2">
-                <a class="nav-link btn btn-outline-secondary" aria-current="page" href="#"> <i class="bi bi-eye-fill me-1"></i> Vista previa </a>
-              </li>
-              <li class="nav-item mx-2">
-                <button class="nav-link btn btn-outline-success" href="#" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar registro </button>
-              </li>
-            </ul>
-          </div>
+            <a class="navbar-brand"> <i class="bi bi-file-text"></i> Registro de miembros </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link btn btn-outline-secondary" aria-current="page" href="#"> <i class="bi bi-eye-fill me-1"></i> Vista previa </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <button class="nav-link btn btn-outline-success" href="#" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar registro </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </nav>
-
-      <div class="container-fluid d-flex justify-content-center align-items-center margin">
+    </nav>
+    
+    <div class="container-fluid d-flex justify-content-center align-items-center margin">
         <div class="col-8 bg-white p-4 text-center"> 
             <h2> Crear nuevo miembro ⚽ </h2>
-            <form method="post" id="Form" action="../../php/add-member.php">
+            <form method="post" name="form" action="../../php/add-member.php" novalidate>
                 <input type="hidden" name="id_team" value="<?php echo $id_team; ?>">
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre completo </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="text" class="form-control text-center" name="full_name" id="formGroupExampleInput" placeholder="Inserte un nombre completo" required autofocus>
+                            <input type="text" class="form-control text-center" name="full_name" id="formGroupExampleInput" placeholder="Inserte un nombre completo" autofocus>
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput2" class="fw-bold mb-1"> Correo electrónico </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="email" class="form-control text-center" name="email" id="formGroupExampleInput2" placeholder="russebel15@example.com" required>
+                            <input type="email" class="form-control text-center" name="email" id="formGroupExampleInput2" placeholder="russebel15@example.com">
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Edad </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" min="0" required>
+                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" min="0">
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Colonia </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="text" class="form-control text-center" name="cologne" id="formGroupExampleInput3" placeholder="Inserte una colonia" required>
+                            <input type="text" class="form-control text-center" name="cologne" id="formGroupExampleInput3" placeholder="Inserte una colonia">
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Teléfono de contacto (WhatsApp) </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="text" class="form-control text-center" name="phone" id="formGroupExampleInput3" placeholder="Inserte un telefono de contacto" required>
+                            <input type="text" class="form-control text-center" name="phone" id="formGroupExampleInput3" placeholder="Inserte un telefono de contacto">
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Estado </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-
                             <!-- Campo oculto para enviar el estado  -->
                             <input type="hidden" name="state" value="Inactivo">
-                            <!-- Campo de entrada deshbilitado  -->
+                            <!-- Campo de entrada deshabilitado  -->
                             <input type="text" class="form-control text-center" id="formGroupExampleInput3" placeholder="Inactivo" disabled>
                         </div> 
                     </div>
+                    <div class="error"></div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> ¿Cómo te enteraste de la Liga de Fútbol 5 "Madriguera" ? </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
@@ -132,9 +136,11 @@
                             </select>
                         </div>
                     </div>
+                    <div class="error"></div>
                 </div>
             </form>
         </div>
-      </div>
+    </div>
+    
 </body>
 </html>
