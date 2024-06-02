@@ -1,0 +1,125 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    height: 100%;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.admin-name {
+    font-size: 1.2em;
+}
+
+.navbar-center {
+    display: flex;
+    gap: 20px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.navbar-center a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.navbar-center a:hover {
+    text-decoration: underline;
+}
+
+.navbar-right .logout-button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar-right .logout-button:hover {
+    background-color: #c0392b;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 60px); /* Altura completa menos la altura de la barra de navegación */
+    background: url('../../images/cancha.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.overlay h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-center {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .overlay h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar-center a {
+        font-size: 1em;
+    }
+
+    .overlay {
+        padding: 15px 30px;
+    }
+
+    .overlay h1 {
+        font-size: 2em;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    .admin-name {
+        font-size: 1em;
+    }
+}

@@ -1,13 +1,14 @@
-// Función que valida los aspectos del formulario del archivo member-register
+// Función que valida los aspectos del formulario del archivo team-register
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementsByName('form')[0];
-
     const full_name = document.getElementsByName('full_name')[0];
     const email = document.getElementsByName('email')[0];
     const age = document.getElementsByName('age')[0];
     const cologne = document.getElementsByName('cologne')[0];
     const phone = document.getElementsByName('phone')[0];
+    const team_name = document.getElementsByName('team_name')[0];
+    const id_league = document.getElementsByName('id_league')[0];
     const additional = document.getElementsByName('additional')[0];
 
     window.submitForm = function() {
@@ -43,13 +44,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const validateInputs = () => {
         let valid = true;
 
+        const team_nameValue = team_name.value.trim();
         const full_nameValue = full_name.value.trim();
         const emailValue = email.value.trim();
         const ageValue = age.value.trim();
         const cologneValue = cologne.value.trim();
         const phoneValue = phone.value.trim();
         const additionalValue = additional.value.trim();
+        const id_leagueValue = id_league.value.trim();
 
+        if (team_nameValue === '') {
+            setError(team_name, 'El nombre del equipo es requerido');
+            valid = false;
+        } else {
+            setSuccess(team_name);
+        }
         if (full_nameValue === '') {
             setError(full_name, 'Su nombre completo es requerido');
             valid = false;
@@ -85,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setError(phone, 'Por favor, ingrese un teléfono de contacto');
             valid = false;
         } else if (phoneValue.length < 10 || phoneValue > 10) {
-            setError(phone, 'El número telefónico debe ser de 10 dígitos');
+            setError(phone, 'El número telefónico debe ser de 10 dígitos')
         } else {
             setSuccess(phone);
         }
@@ -95,6 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
             valid = false;
         } else {
             setSuccess(additional);
+        }
+        if (id_leagueValue === '') {
+            setError(id_league, 'Por favor, seleccione una opción');
+            valid = false;
+        }
+        else {
+            setSuccess(id_league);
         }
 
         return valid;

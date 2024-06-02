@@ -2,13 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementsByName('form')[0];
-    const team_name = document.getElementsByName('team_name')[0];
     const full_name = document.getElementsByName('full_name')[0];
     const email = document.getElementsByName('email')[0];
     const age = document.getElementsByName('age')[0];
     const cologne = document.getElementsByName('cologne')[0];
     const phone = document.getElementsByName('phone')[0];
-    const state = document.getElementsByName('state')[0];
+    const team_name = document.getElementsByName('team_name')[0];
     const additional = document.getElementsByName('additional')[0];
 
     window.submitForm = function() {
@@ -92,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (phoneValue === '') {
             setError(phone, 'Por favor, ingrese un teléfono de contacto');
             valid = false;
-        } else if (phoneValue.length < 10) {
+        } else if (phoneValue.length < 10 || phoneValue > 10) {
             setError(phone, 'El número telefónico debe ser de 10 dígitos')
         } else {
             setSuccess(phone);

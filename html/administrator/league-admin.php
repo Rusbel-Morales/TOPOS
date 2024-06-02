@@ -1,7 +1,3 @@
-<?php
-  require '../../php/cache-control.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +22,12 @@
     <script src="../../scripts/alerts.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
@@ -45,26 +44,30 @@
         </div>
       </nav>
 
-      <div class="container-fluid d-flex justify-content-center align-items-center margin">
-        <div class="col-md-11 bg-white p-4 text-center"> 
-            <h2 class="mb-4"> <b> Ligas disponibles </b></h2>
-            <div class="table-responsive">
-                <table class="table table-dark table-striped table-bordered align-middle">
-                    <thead>
-                        <tr>  
-                            <th> # </th>
-                            <th> Nombre de liga </th>
-                            <th> Fecha de inicio </th>
-                            <th> Fecha de término </th>
-                            <th> Reglas de liga </th>
-                            <th> Opciones </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php include '../../php/show-league-table.php'; ?>
-                    </tbody>
-                </table>
+      <div class="container-fluid pt-3 mt-5 text-center">
+      <div class="row justify-content-center mx-1">
+          <div class="card col-sm-8 col-md-12 col-lg-10 col-xl-8">
+            <div class="card-body">
+                <h2 class="card-title mb-4 fw-bolder"> <b> Ligas disponibles </b></h2>
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped table-bordered align-middle">
+                        <thead>
+                            <tr>  
+                                <th> # </th>
+                                <th> Nombre de liga </th>
+                                <th> Fecha de inicio </th>
+                                <th> Fecha de término </th>
+                                <th> Reglas de liga </th>
+                                <th> Opciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php include '../../php/show-league-table.php'; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+          </div>
         </div>
     </div>
 

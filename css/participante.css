@@ -6,7 +6,7 @@ html, body {
 }
 body {
     background: 
-    url('../../images/cancha.png ') center center no-repeat; /* La imagen de fondo principal */
+        url('cancha.jpg') center center no-repeat; /* La imagen de fondo principal */
     background-size: auto, auto, cover; /* Ajusta el tamaño de cada capa de fondo */
     background-attachment: fixed; /* Fija todas las capas de fondo */
     margin: 0;
@@ -93,4 +93,86 @@ body::after {
 #enviar{
     background-color: yellowgreen;
     color: white;
+}
+html, body {
+    height: 100%; /* Aseguramos que el html y body ocupen todo el alto de la página */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: 
+        url('cancha.jpg') center center no-repeat; /* La imagen de fondo principal */
+    background-size: auto, auto, cover; /* Ajusta el tamaño de cada capa de fondo */
+    background-attachment: fixed; /* Fija todas las capas de fondo */
+    background-color: #000; /* Color de fondo de respaldo en caso de que las imágenes no carguen */
+    font-family: Arial, sans-serif;
+    min-height: 100%; /* Asegura que el body tenga al menos el alto de la ventana */
+}
+
+.formulario {
+    width: 50%;
+    margin: 20px auto; /* Agrega un poco de margen superior e inferior */
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con un poco de transparencia */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: relative; /* Esto es para que el contenido del formulario no se vea afectado por los logos */
+}
+
+.controls {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.botones {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.botones:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries para hacer la página responsiva */
+@media (max-width: 1200px) {
+    .formulario {
+        width: 70%; /* Ajustamos el ancho del formulario para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 768px) {
+    .formulario {
+        width: 90%; /* Ajustamos el ancho del formulario para tablets y dispositivos medianos */
+        padding: 15px; /* Reducimos el padding para ajustar el contenido */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background:  
+            url('cancha.jpg') center center no-repeat;
+        background-size: 50px, 50px, cover; /* Reducimos el tamaño de los logos en pantallas pequeñas */
+    }
+
+    .formulario {
+        width: 95%; /* Ajustamos el ancho del formulario para móviles */
+        padding: 10px; /* Reducimos aún más el padding */
+    }
+
+    h3, h4 {
+        font-size: 1.2em; /* Ajustamos el tamaño de fuente para cabeceras en móviles */
+    }
+
+    .controls, .botones {
+        font-size: 1em; /* Ajustamos el tamaño de fuente para los controles y botones */
+    }
 }

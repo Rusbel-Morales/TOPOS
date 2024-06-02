@@ -1,24 +1,21 @@
-<?php
-    if(isset($_GET['id_league'])) {
+<?php 
+    if(isset($_GET['id_team'])) {
         require '../../php/databases.php';
-        $id_league = $_GET['id_league'];
+        $id_team = $_GET['id_team'];
 
         // Preparamos la consulta SQL para evitar inyecciones
-        $sql = "SELECT name FROM league WHERE id_league = ?";
+        $sql = "SELECT team_name FROM team WHERE id_team = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id_league);
-
+        $stmt->bind_param("i", $id_team);
         if ($stmt->execute()) {
-
             // Obtenemos el resultado de la declaración preparada
             $result = $stmt->get_result();
-            $league_name = "";
-    
+            $team_name = "";
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
-                $league_name = $row['name'];
+                $team_name = $row['team_name'];
             }
-            
+
             // Cerramos la declaración preparada
             $stmt->close();
         }
@@ -30,7 +27,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Registro de equipo:  <?php echo $league_name; ?> </title>
+    <title> Registro de miembros: <?php echo $team_name; ?> </title>
 
     <!-- Bootstrap designs-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -41,29 +38,29 @@
     <!-- External CSS file -->
     <link rel="stylesheet" href="../../css/admin.css">
 
-    <!-- JavaScript - Bootstrap -->
+    <!-- JavaScript - Boostrap  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    
     <!-- External JavaScript file  -->
-    <script src="../../scripts/forms/form-team-register.js"></script>
+    <script src="../../scripts/forms/form-member-register.js"> </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand"> <i class="bi bi-file-text"></i> Registro de equipo </a>
+            <a class="navbar-brand"> <i class="bi bi-file-text"></i> Registro de miembros </a>
         </div>
     </nav>
-
-      <div class="container-fluid d-flex justify-content-center align-items-center margin">
-        <div class="col-8 bg-white p-4 text-center"> 
-            <h2> Crear nuevo equipo ⚽ </h2>
-            <form method="post" name="form" action="../../php/add-team.php">
-                <input type="hidden" name="id_league" value="<?php echo $id_league; ?>">
+    
+    <div class="container-fluid d-flex justify-content-center align-items-center margin">
+        <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 bg-white p-4 text-center"> 
+            <h2> Crear nuevo miembro ⚽ </h2>
+            <form method="post" name="form" action="../../php/add-member.php" novalidate>
+                <input type="hidden" name="id_team" value="<?php echo $id_team; ?>">
                 <div class="form-group mt-3 input-control">
-                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> Nombre de capitán </label>
+                    <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre completo </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="text" class="form-control text-center" name="full_name" id="formGroupExampleInput3" placeholder="Escriba el nombre de un capitan ACTIVO" required>
+                            <input type="text" class="form-control text-center" name="full_name" id="formGroupExampleInput" placeholder="Inserte un nombre completo" autofocus>
                         </div>
                     </div>
                     <div class="error"></div>
@@ -104,15 +101,6 @@
                     </div>
                     <div class="error"></div>
                 </div>
-                <div class="form-group mt-3 input-control">  
-                    <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre de equipo </label>
-                    <div class="row justify-content-center">
-                        <div class="col-8">
-                            <input type="text" class="form-control text-center" name="team_name" id="formGroupExampleInput" placeholder="Escriba un nombre de equipo" required autofocus>
-                        </div>
-                    </div>
-                    <div class="error"></div>
-                </div>
                 <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Estado </label>
                     <div class="row justify-content-center">
@@ -140,18 +128,12 @@
                     </div>
                     <div class="error"></div>
                 </div>
-                <div class="form-group mt-5"> 
-                    <div class="row justify-content-center"> 
-                        <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center">
-                            <img src="../../Images/EQUIPO.png" alt="EQUIPO" class="img-fluid" width="400" height="300">
-                        </div>
-                    </div>
-                </div>
             </form>
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                     <button class="btn btn-success mt-5 w-100" href="#" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar registro </button>
                 </div>
+            </div>
             </div>
         </div>
     </div>

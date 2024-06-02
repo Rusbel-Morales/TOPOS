@@ -1,4 +1,4 @@
-<<?php 
+<?php 
     if(isset($_GET['id_team'])) {
         require '../../php/databases.php';
         $id_team = $_GET['id_team'];
@@ -45,19 +45,9 @@
     <script src="../../scripts/forms/form-member-register.js"> </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand"> <i class="bi bi-file-text"></i> Registro de miembros </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link btn btn-outline-secondary" aria-current="page" href="#"> <i class="bi bi-eye-fill me-1"></i> Vista previa </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <button class="nav-link btn btn-outline-success" href="#" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar registro </button>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     
@@ -88,7 +78,7 @@
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Edad </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" min="0">
+                            <input type="number" class="form-control text-center" name="age" id="formGroupExampleInput3" placeholder="Inserte una edad" min="0" max="10">
                         </div>
                     </div>
                     <div class="error"></div>
@@ -139,6 +129,11 @@
                     <div class="error"></div>
                 </div>
             </form>
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <button class="btn btn-success mt-5 w-100" href="#" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar registro </button>
+                </div>
+            </div>
         </div>
     </div>
     

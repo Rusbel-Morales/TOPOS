@@ -45,7 +45,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
+          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Administración de equipo </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -65,65 +65,68 @@
         </div>
     </nav>
 
+    <!-- Contenedor principal -->
     <div class="container-fluid pt-3 mt-5 text-center">
-      <div class="row justify-content-center mx-1">
+    <!-- Tarjeta para la sección de miembros del equipo -->
+    <div class="row justify-content-center mx-1">
         <div class="card col-sm-8 col-md-12 col-lg-10 col-xl-8">
-          <div class="card-body">
-            <h2 class=" card-title mb-4 fw-bolder"> <b> Miembros de equipo </b></h2>
-            <p class="fw-bolder"  style="text-align: left; margin-left: 25px"> <i class="bi bi-star-fill fs-5" style="color: #ffbf00"> </i> - Representa el capitán del equipo </p>
-            <div class="table-responsive">
-              <table class="table table-dark table-bordered align-middle">
-                <thead>
-                    <tr>  
-                        <th> # </th>
-                        <th> Nombre completo </th>
-                        <th> Correo electrónico </th>
-                        <th> Edad </th>
-                        <th> Colonia </th>
-                        <th> Telefono <br> de contacto </th>
-                        <th> Estado </th> 
-                        <th> Opciones </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php include '../../php/show-team-member-table.php'; ?>
-                </tbody>
-              </table>
+            <div class="card-body">
+                <h2 class="card-title mb-4 fw-bolder">Miembros de equipo</h2>
+                <p class="text-start"><i class="bi bi-star-fill text-warning"></i> - Representa al capitán del equipo</p>
+                <!-- Tabla responsiva -->
+                <div class="table-responsive">
+                    <table class="table table-dark table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Nombre completo </th>
+                                <th> Correo electrónico </th>
+                                <th> Edad </th>
+                                <th> Colonia </th>
+                                <th> Teléfono de contacto </th>
+                                <th> Opciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php include '../../php/show-team-member-table-user.php'; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
+
 
     <!-- div en el que se insertan las alertas  -->
     <div id="toastBox" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
 
     <!-- Notificaciones JavaScript -->
-    <script>
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     var notification = '<?php echo $notification; ?>';
-        //     var notificationType = '<?php echo $notificationType; ?>';
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var notification = '<?php echo $notification; ?>';
+            var notificationType = '<?php echo $notificationType; ?>';
 
-        //     if (notification) {
-        //         showToast(notification, notificationType);
-        //     }
-        // });
+            if (notification) {
+                showToast(notification, notificationType);
+            }
+        });
 
-        // function showToast(message, type) {
-        //     var toastContainer = document.getElementById('toastBox');
-        //     var toast = document.createElement('div');
-        //     toast.className = 'toast';
-        //     toast.classList.add('show', type);
-        //     toast.setAttribute('role', 'alert');
-        //     toast.innerHTML = message;
+        function showToast(message, type) {
+            var toastContainer = document.getElementById('toastBox');
+            var toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.classList.add('show', type);
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = message;
 
-        //     toastContainer.appendChild(toast);
+            toastContainer.appendChild(toast);
 
-        //     setTimeout(function() {
-        //         toast.classList.remove('show');
-        //         toastContainer.removeChild(toast);
-        //     }, 5000);
-        // }
-    </script>
+            setTimeout(function() {
+                toast.classList.remove('show');
+                toastContainer.removeChild(toast);
+            }, 5000);
+        }
+    </script> -->
 </body>
 </html>

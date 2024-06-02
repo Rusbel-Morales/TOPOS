@@ -53,11 +53,17 @@
                 $sql = "SELECT full_name FROM team_member WHERE id_team = $id_team LIMIT 1"; // LIMIT se usa para restringir el número de filas
                 $result_name = $conn->query($sql);
                 $row_name = $result_name->fetch_assoc();
+
+                // Obtenemos la longitud de los miembros de un equipo para determinar su incripción a la liga
+                $sql_length_table = "SELECT COUNT(*) AS total FROM team_member WHERE id_team = $id_team";
+                $result_length = $conn->query($sql_length_table);
+                $row_length = $result_length->fetch_assoc();
                 ?>
                 <tr>
-                    <td><?php echo $cont; ?></td>
-                    <td><?php echo $row['team_name']; ?></td>
+                    <td> <?php echo $cont; ?> </td>
+                    <td> <?php echo $row['team_name']; ?> </td>
                     <td> <?php echo $row_name['full_name']; ?> </td>
+                    <td> <?php echo ($row_length['total'] < 5) ? "No inscrito" : "Inscrito"; ?></td>
                     <td> 
                         <!-- Botón para editar -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id_team']?>"> <i class="bi bi-pencil-fill"> </i> </button>
@@ -133,6 +139,7 @@
                     <td> ... </td>
                     <td> ... </td>
                     <td> ... </td>
+                    <td> ... </td>
                     <td> <a class="btn btn-primary" href="team-register.php?id_league=<?php echo $id_league?>"> Agregar equipo </a> </td>
                 </tr>
             <?php
@@ -141,7 +148,7 @@
             else {
                 ?>
                 <tr> 
-                    <td colspan="3"> No se encontraron equipos para esta liga </td>
+                    <td colspan="4"> No se encontraron equipos para esta liga </td>
                     <td>
                         <a class="btn btn-primary" href="team-register.php?id_league=<?php echo $id_league?>"> Agregar equipo </a>
                     </td>

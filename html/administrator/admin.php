@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../../css/homepage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
@@ -23,10 +23,10 @@ if (!isset($_SESSION['admin'])) {
             <span class="admin-name">Administrador</span>
         </div>
         <div class="navbar-center">
-            <a href="#">Reservas de Cancha</a>
-            <a href="#">Estadísticas</a>
-            <a href="#">Equipos</a>
-            <a href="#">Torneos</a>
+            <a href="../../html/administrator/team-admin.php">Equipos</a>
+            <a href="../../html/administrator/league-admin.php">Ligas</a>
+            <a href="../../html/administrator/team-member-admin">Jugadores</a>
+            <a href="#">Reservaciones de Cancha</a>
         </div>
         <div class="navbar-right">
             <form action="logout.php" method="post">

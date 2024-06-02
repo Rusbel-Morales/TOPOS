@@ -68,13 +68,12 @@ if ($stmt->execute()) {
         while ($row = $result->fetch_assoc()) {
             ?>
             <tr> 
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $cont ?> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['full_name'] ?> <?php echo ($cont == 1) ? "<i class='bi bi-star-fill fs-5' style='color: #ffbf00; margin-left: 5px'>" : '' ?> </i> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['email'] ?> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['age'] ?> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['cologne'] ?> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['telephone_contact'] ?> </td>
-                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['state'] ?> </td>
+                <td> <?php echo $cont   ?> </td>
+                <td> <?php echo $row['full_name'] ?> <?php echo ($cont == 1) ? "<i class='bi bi-star-fill fs-5' style='color: #ffbf00; margin-left: 5px'>" : '' ?> </i> </td>
+                <td> <?php echo $row['email'] ?> </td>
+                <td> <?php echo $row['age'] ?> </td>
+                <td> <?php echo $row['cologne'] ?> </td>
+                <td> <?php echo $row['telephone_contact'] ?> </td>
                 <td> 
                     <!-- Botón para editar -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id_team_member']?>"> <i class="bi bi-pencil-fill"> </i> </button>
@@ -127,18 +126,6 @@ if ($stmt->execute()) {
                                         <div class="row justify-content-center">
                                             <div class="col-8">
                                                 <input type="text" class="form-control text-center" id="formGroupExampleInput2" name="phone" placeholder="Inserte un telefono de contacto" value="<?php echo $row['telephone_contact'] ?>" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <label for="formGroupExampleInput2" class="fw-bold mb-1"> Estado </label>
-                                        <div class="row justify-content-center">
-                                            <div class="col-8">
-                                                <select class="form-control text-center" name="state">
-                                                    <option value="" disabled> Selecciona una opción </option>
-                                                    <option value="Activo" <?php echo ($row['state'] === 'Activo') ? 'selected' : '' ?>> Activo </option>
-                                                    <option value="Inactivo" <?php echo ($row['state'] === 'Inactivo') ? 'selected' : ''?>> Inactivo </option>
-                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -195,9 +182,8 @@ if ($stmt->execute()) {
             <td> ... </td>
             <td> ... </td>
             <td> ... </td>
-            <td> ... </td>
             <td>                 
-                <a class="btn btn-primary" href="member-register.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
+                <a class="btn btn-primary" href="member-register-user.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
             </td>
         </tr>
         <?php
@@ -205,9 +191,9 @@ if ($stmt->execute()) {
     else {
         ?>
         <tr> 
-            <td colspan="7"> No se encontraron jugadores para este equipo </td>
+            <td colspan="6"> No se encontraron jugadores para este equipo </td>
             <td>
-                <a class="btn btn-primary" href="member-register.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
+                <a class="btn btn-primary" href="member-register-user.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
             </td>
         </tr>
         <?php
