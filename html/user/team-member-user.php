@@ -44,6 +44,7 @@
 
     <!-- External JavaScript file  -->
     <script src="../../scripts/forms/form-email-user.js"></script>
+    <script src="../../scripts/forms/edit-member-user.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

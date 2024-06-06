@@ -33,7 +33,7 @@
             // Cerramos la declaración preparada
             $stmt->close();
 
-            header("Location: ../html/administrator/team-member-admin.php?id_team=$id_team");
+            header("Location: ../html/user/team-member-user.php?id_team=$id_team");
             exit();
         }
     }

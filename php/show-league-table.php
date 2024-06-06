@@ -1,41 +1,60 @@
 <?php
     require 'databases.php';
 
-    # Editar una fila 
-    if (isset($_POST['editLeague'])) {
-        $editLeague = $_POST['editLeague']; 
-        $name = $_POST['league_name'];
-        $date = $_POST['date'];
-        $date2 = $_POST['date2'];
+    # Eliminar una fila según sea correpondiente (SOLO SI LA LIGA NO TIENE NINGÚN EQUIPO) 
+    $showWarningModal = false;
+    $warningLeagueName = '';
 
-        // Preparamos la consulta SQL para evitar inyecciones
-        $sql = "UPDATE league SET name= ?, date_i = ?, date_e = ? WHERE id_league = ?"; 
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi", $name, $date, $date2, $editLeague);
-        
-        if ($stmt->execute()) {
-
-            // Cerrar la declaración preparara
-            $stmt->close();
-        }
-        else echo "Error al actualizar información de la liga seleccionado: ". $stmt->error;
-    }
-
-    # Eliminar una fila según sea correpondiente 
     if (isset($_POST['deleteLeague'])) {
+
         $deleteLeague = $_POST['deleteLeague'];
         
         // Preparamos la consulta SQL para evitar inyecciones
-        $sql = "DELETE FROM league WHERE id_league = ?";
+        // Verificamos si la liga tiene equipos
+        $sql = "SELECT COUNT(*) AS total_league FROM team WHERE id_league = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $deleteLeague);
 
         if ($stmt->execute()) {
 
-            // Cerramos la declaración preparada
-            $stmt->close();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            if ($row['total_league'] > 0) {
+
+                // Mostramos advertencia
+                $showWarningModal = true;
+
+                // Cerramos la declaración preparada
+                $stmt->close();
+
+                $sql = "SELECT name FROM league WHERE id_league = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $deleteLeague);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $league = $result->fetch_assoc();
+                $warningLeagueName = $league['name'];
+
+                // Cerramos la declaración preparada
+                $stmt->close();
+
+            }
+
+            // Procedemos con la eliminación
+            else {
+                $sql = "DELETE FROM league WHERE id_league = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $deleteLeague);
+    
+                if ($stmt->execute()) {
+    
+                    // Cerramos la declaración preparada
+                    $stmt->close();
+                }
+                else echo "Error al eliminar la liga: " . $stmt->error;
+            }
         }
-        else echo "Error al eliminar la liga: " . $stmt->error;
     }
     
     // Mostrar todo el contenido de la base de datos
@@ -69,12 +88,12 @@
                                 </div>
 
                                 <!-- Formulario dentro de la ventana emergente  -->
-                                <form class="text-dark" name="form" method="post" action="">
+                                <form class="text-dark" name="form<?php echo $row['id_league']?>" method="post" action="../../php/validate-inputs-edit/edit-league.php">
                                     <div class="form-group mt-3 input-control">
                                         <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre </label>
                                         <div class="row justify-content-center"> 
                                             <div class="col-8">
-                                                <input type="text" class="form-control text-center" id="formGroupExampleInput" name="league_name" placeholder="Nombre de liga" value="<?php echo $row['name'] ?>" required>
+                                                <input type="text" class="form-control text-center" id="formGroupExampleInput" name="league_name" placeholder="Nombre de liga" value="<?php echo $row['name'] ?>">
                                             </div>                                
                                         </div>
                                         <div class="error"> </div>
@@ -83,7 +102,7 @@
                                         <label for="formGroupExampleInput2" class="fw-bold mb-1"> Fecha de inicio </label>
                                         <div class ="row justify-content-center">
                                             <div class="col-8">
-                                                <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date" placeholder="Selecciona una fecha" value="<?php echo $row['date_i'] ?>" required>
+                                                <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date" placeholder="Selecciona una fecha" value="<?php echo $row['date_i'] ?>">
                                             </div>
                                         </div>
                                         <div class="error"> </div>
@@ -92,16 +111,16 @@
                                         <label for="formGroupExampleInput2" class="fw-bold mb-1"> Fecha de término </label>
                                         <div class="row justify-content-center">
                                             <div class="col-8">
-                                                <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date2" placeholder="Selecciona una fecha" value="<?php echo $row['date_e'] ?>" required>
+                                                <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date2" placeholder="Selecciona una fecha" value="<?php echo $row['date_e'] ?>">
                                             </div>
                                         </div>
                                         <div class="error"> </div>
                                     </div>
-                                </form>
-                                <div class="modal-footer mt-4">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
                                     <input type="hidden" name="editLeague" value="<?php echo $row['id_league']?>">
-                                    <button type="submit" class="btn btn-success" onclick="submitForm()"> Guardar cambios </button>
+                                </form>
+                                <div class="modal-footer mt-4 closs">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                                    <button type="submit" class="btn btn-success" onclick="submitForm(<?php echo $row['id_league']; ?>)"> Guardar cambios </button>
                                 </div>
                             </div>
                         </div>
@@ -171,6 +190,34 @@
         </tr>
         <?php
     }
+
+    // Mostrar el modal de evitar eliminación
+    if ($showWarningModal) {
+        echo '<script>
+                window.onload = function() {
+                    let warningModal = new bootstrap.Modal(document.getElementById("warningModal"));
+                    warningModal.show();
+                };
+              </script>';
+        ?>
+        <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title w-100 text-center text-danger" id="warningModalLabel"> <i class="bi bi-exclamation-circle-fill"></i> Eliminación denegada </h3>
+                    </div>
+                    <div class="modal-body fw-bolder">
+                        No se puede eliminar la liga <?php echo $warningLeagueName; ?> porque tiene equipos asociados.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    } 
+
 
     // Cerramos la conexión
     $conn->close();

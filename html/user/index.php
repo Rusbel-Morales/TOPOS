@@ -76,6 +76,89 @@
 
   <h1 id="tit">INICIA LA EMOCION</h1> <!-- PENSAR ALGO DESPUES  -->  
 
+  <h1 id="insana">Resultados previos</h1>
+  <div class="container">
+   
+	
+	<div class="match">
+		<div class="match-header">
+		</div>
+		<div class="match-content">
+			<div class="column">
+				<div class="team team--home">
+					<div class="team-logo">
+						
+						<img src="https://assets.codepen.io/285131/chelsea.svg" />
+					</div>
+					<h2 class="team-name">Chelsea</h2>
+				</div>
+			</div>
+			<div class="column">
+				<div class="match-details">
+					<div class="match-date">
+						3 May at <strong>17:30</strong>
+					</div>
+					<div class="match-score">
+						<span class="match-score-number match-score-number--leading">3</span>
+						<span class="match-score-divider">:</span>
+						<span class="match-score-number">1</span>
+					</div>
+				
+				</div>
+			</div>
+			<div class="column">
+				<div class="team team--away">
+					<div class="team-logo">
+				
+						<img src="https://resources.premierleague.com/premierleague/badges/t1.svg" />
+					</div>
+					<h2 class="team-name"> Man Utd</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="match">
+		<div class="match-header">
+		</div>
+		<div class="match-content">
+			<div class="column">
+				<div class="team team--home">
+					<div class="team-logo">
+						
+						<img src="https://assets.codepen.io/285131/chelsea.svg" />
+					</div>
+					<h2 class="team-name">Chelsea</h2>
+				</div>
+			</div>
+			<div class="column">
+				<div class="match-details">
+					<div class="match-date">
+						3 May at <strong>17:30</strong>
+					</div>
+					<div class="match-score">
+						<span class="match-score-number match-score-number--leading">3</span>
+						<span class="match-score-divider">:</span>
+						<span class="match-score-number">1</span>
+					</div>
+				
+				</div>
+			</div>
+			<div class="column">
+				<div class="team team--away">
+					<div class="team-logo">
+				
+						<img src="https://resources.premierleague.com/premierleague/badges/t1.svg" />
+					</div>
+					<h2 class="team-name"> Man Utd</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</section>
+
   <section class="Reservas">
   <h1 id="insana">  ¿QUE PUEDES HACER CON TOPOS FC?</h1>
   <div class="cards-grid">
@@ -99,7 +182,22 @@
 
             </div>
             <div class="flip-card-back2">
-              <h1>PARTICIPAR EN LIGA</h1>
+              <h1>Liga masculina</h1>
+              Lorem ipsum dolor 
+              <a class="botones" id="Registrar" href="form-captain-register.php">Registrar Equipo</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-image: url('../../images/EQUIPO.png);">
+              
+
+            </div>
+            <div class="flip-card-back3">
+              <h1>Liga femenina</h1>
               Lorem ipsum dolor 
               <a class="botones" id="Registrar" href="form-captain-register.php">Registrar Equipo</a>
             </div>
@@ -113,73 +211,7 @@
 </section>
 
 <section class="estadisticas">
-<h1 id="insana2">  POSICIONES</h1>
 
-  <div class="container mt-5">
-    <table id="tablaequipo" class="table table-striped" style="width:100%">
-        <thead class="bg-warning">
-            <tr>
-                <th>Posición</th>
-                <th>Equipo</th>
-                <th>PJ</th>
-                <th>G</th>
-                <th>E</th>
-                <th >P</th>
-                <th>GF</th>
-                <th>GC</th>
-                <th>DG</th>
-                <th>PTS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            include_once '../../php/conexion.php';
-
-            $objeto = new Conexion();
-            $conexion = $objeto->Conectar();
-
-            $consulta = "SELECT * FROM equipo";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute();
-            $equipo = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach ($equipo as $equipos) {
-            ?>
-            <tr>
-                <td><?php echo $equipos['id_equipo']; ?></td>
-                <td><?php echo $equipos['nombre_equipo']; ?></td>
-                <td><?php echo $equipos['pj']; ?></td>
-                <td><?php echo $equipos['g']; ?></td>
-                <td><?php echo $equipos['e']; ?></td>
-                <td><?php echo $equipos['p']; ?></td>
-                <td><?php echo $equipos['gf']; ?></td>
-                <td><?php echo $equipos['gc']; ?></td>
-                <td><?php echo $equipos['dg']; ?></td>
-                <td><?php echo $equipos['pts']; ?></td>
-            </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
-    
-</div>
-
-<div id="multi">
-<a class="boton_esta" href="#">Ver mas</a>
-</div>
-</section>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
-<script src="script.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#tablaequipo').DataTable();
-    });
-</script>
 
 <section class="cancha">
 <div class="wrapper">

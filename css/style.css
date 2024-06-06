@@ -36,6 +36,9 @@
 
 
 
+
+
+
 /* TITULOS DE LA PORTADA Y EL BOTON*/
 
 #titulo{
@@ -171,6 +174,145 @@
 /*Fin de la barra de navegacion*/
 
 
+
+/*Proximos partidos*/
+
+select,
+textarea {
+	font: inherit;
+}
+
+
+img {
+	display: block;
+	
+}
+
+strong {
+	font-weight: 600;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+	line-height: 1.5;
+
+}
+
+
+.match {
+
+  display: flex;
+	flex-direction: row;
+	justify-content: center; /* Centra los elementos en el eje principal */
+	align-items: center; /* Centra los elementos en el eje transversal */
+	border-radius: 10px;
+	min-width: 100px; /* Ancho mínimo antes de que el elemento se envuelva */
+	max-width: 100%; /* Asegura que el contenedor no exceda el ancho de la pantalla */
+	box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
+	overflow: hidden; /* Evita que los elementos internos sobresalgan del borde redondeado */
+ 
+  margin-left: 50px;
+	
+}
+
+.match-header {
+	display: flex;
+	padding: 16px;
+	border-bottom: 2px solid rgba(#303030, 0.1);
+}
+
+
+
+.match-content {
+	display: flex;
+	position: relative;
+}
+
+.column {
+	padding: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100%/3);  
+}
+
+.team-logo {
+	width: 100px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: var(--color-bg-primary);
+	box-shadow: 0 4px 4px 0 rgba(#303030, 0.15),
+		0 0 0 15px var(--color-bg-secondary);
+	img {
+		width: 50px;
+	}
+
+}
+
+.team-name {
+	text-align:center;
+	margin-top: 24px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.match-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.match-date {
+	font-size: 14px;
+	color: var(--color-text-secondary);
+	strong {
+		color: var (--color-text-primary);
+	}
+}
+
+.match-score {
+	margin-top: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.match-score-number {
+	font-size: 48px;
+	font-weight: 600;
+	line-height: 1;
+	&--leading {
+		color: var(--color-theme-primary);
+	}
+}
+
+.match-score-divider {
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 1;
+	color: var (--color-text-icon);
+	margin-left: 10px;
+	margin-right: 10px;
+	
+}
+
+
+.container {
+	position: flex;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+  
+
+}
+
+
+
 /*Titulo en cuadro blanco*/
 #tit{
   text-align: center;
@@ -202,10 +344,10 @@ padding-bottom: 60px;
 
 
 .flip-card {
-width: 420px;
-height: 320px;
-perspective: 2000px;
-margin: 10px; 
+  width: 17vw;
+  height: 30vh;
+  perspective: 2000px;
+  margin: 25px; 
 }
 .flip-card-inner {
 position: relative;
@@ -229,7 +371,7 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 .flip-card-back1 {
-font-size: 1.25rem;
+  font-size: .9rem;
 text-align: center;
 display: grid;
 place-items: center;
@@ -237,12 +379,31 @@ padding: 32px;
 background-color: #8a4932a9;
 transform: rotateY(180deg);
 }
+
+.flip-card-back1 h1 {
+
+  font-size: 1.7rem ;
+
+}
+
+
+.flip-card-back2 h1 {
+
+  font-size: 1.7rem ;
+
+}
+
+.flip-card-back3 h1 {
+
+  font-size: 1.7rem ;
+
+}
 .flip-card:hover .flip-card-inner {
 transform: rotateY(-180deg);
 }
 
 .flip-card-back2 {
-font-size: 1.25rem;
+font-size: .9rem;
 text-align: center;
 display: grid;
 place-items: center;
@@ -252,7 +413,7 @@ transform: rotateY(180deg);
 
 }
 .flip-card-back3 {
-  font-size: 1.25rem;
+  font-size: .9rem;
   text-align: center;
   display: grid;
   place-items: center;

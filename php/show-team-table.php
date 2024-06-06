@@ -1,38 +1,49 @@
 <?php
-    // Editar equipo
-    if (isset($_POST['editTeam'])) {
-        $id_team = $_POST['editTeam'];
-        $team_name = $_POST['name'];
+    // Eliminar equipo
 
-        // Preparamos la consulta SQL para evitar inyecciones
-        $sql = "UPDATE team SET team_name = ? WHERE id_team = ?";
+        # Eliminar una fila según sea correpondiente (SOLO SI LA LIGA NO TIENE NINGÚN EQUIPO) 
+    $showWarningModal = false;
+    $warningTeamName = '';
+
+    if (isset($_POST['deleteTeam'])) {
+        $deleleTeam = $_POST['deleteTeam'];
+
+        // Verificamos si el equipo tiene por lo menos 1 miembro
+        $sql = "SELECT COUNT(*) AS total_member FROM team_member WHERE id_team = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $team_name, $id_team);
+        $stmt->bind_param("i", $deleleTeam);
 
         if ($stmt->execute()) {
 
-            // Cerramos la declaración preparada
-            $stmt->close();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            if ($row['total_member'] > 0) {
+                $showWarningModal = true; 
+                
+                $sql = "SELECT team_name FROM team WHERE id_team = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $deleleTeam);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+                $warningTeamName = $row['team_name'];
+
+            }
         }
-        else echo "Error al actualizar información del equipo: " . $stmt->error;
-    }
+        else {
+            // Preparamos la consulta SQL para evitar inyecciones
+            $sql = "DELETE FROM team WHERE id_team = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $deleleTeam);
 
-    // Eliminar equipo
-    if (isset($_POST['deleteTeam'])) {
-    $deleleTeam = $_POST['deleteTeam'];
-
-    // Preparamos la consulta SQL para evitar inyecciones
-    $sql = "DELETE FROM team WHERE id_team = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $deleleTeam);
-      
-    if ($stmt->execute()) {
-
-        // Cerramos la declaración preparada
-        $stmt->close();
-
-    }
-    else echo "Error al eliminar el equipo: " . $stmt->error;
+            if ($stmt->execute()) {
+                echo "Equipo eliminado correctamente.";
+                $stmt->close();
+            } else {
+                echo "Error al eliminar el equipo: " . $stmt->error;
+            }
+        }
     }
 
     // Obtener todos los equipos relacionados con una liga y preparamos la consulta SQL para evitar inyecciones 
@@ -41,7 +52,6 @@
     $stmt->bind_param("i", $id_league);
 
     if ($stmt->execute()) {
-
         // Obtenemos el resultado de la consulta preparada
         $result = $stmt->get_result();
         $cont = 1;
@@ -54,7 +64,7 @@
                 $result_name = $conn->query($sql);
                 $row_name = $result_name->fetch_assoc();
 
-                // Obtenemos la longitud de los miembros de un equipo para determinar su incripción a la liga
+                // Obtenemos la longitud de los miembros de un equipo para determinar su inscripción a la liga
                 $sql_length_table = "SELECT COUNT(*) AS total FROM team_member WHERE id_team = $id_team";
                 $result_length = $conn->query($sql_length_table);
                 $row_length = $result_length->fetch_assoc();
@@ -64,7 +74,7 @@
                     <td> <?php echo $row['team_name']; ?> </td>
                     <td> <?php echo $row_name['full_name']; ?> </td>
                     <td> <?php echo ($row_length['total'] < 5) ? "No inscrito" : "Inscrito"; ?></td>
-                    <td> 
+                    <td>
                         <!-- Botón para editar -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id_team']?>"> <i class="bi bi-pencil-fill"> </i> </button>
                                     
@@ -78,21 +88,23 @@
                                     </div>
 
                                     <!-- Formulario dentro de la ventana emergente  -->
-                                    <form class="text-dark" method="post">
-                                        <div class="form-group mt-3">
+                                    <form class="text-dark" name="form<?php echo $row['id_team']; ?>" method="post" action="../../php/validate-inputs-edit/edit-team.php">
+                                        <div class="form-group mt-3 input-control">
                                             <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre de equipo </label>
                                             <div class="row justify-content-center"> 
                                                 <div class="col-8">
-                                                    <input type="text" class="form-control text-center" id="formGroupExampleInput" name="name" placeholder="Nombre de equipo" value="<?php echo $row['team_name']?>" required>
+                                                    <input type="text" class="form-control text-center" id="formGroupExampleInput" name="name" placeholder="Nombre de equipo" value="<?php echo $row['team_name']?>" >
                                                 </div>                                
                                             </div>
+                                            <div class="error"> </div>
                                         </div>
-                                        <div class="modal-footer mt-4">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                                            <input type="hidden" name="editTeam" value="<?php echo $row['id_team'] ?>">
-                                            <button type="submit" class="btn btn-success"> Guardar cambios </button>
-                                        </div>
+                                        <input type="hidden" name="editTeam" value="<?php echo $row['id_team']; ?>">
+                                        <input type="hidden" name="league" value="<?php echo $id_league; ?>">
                                     </form>
+                                    <div class="modal-footer mt-4">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                                        <button type="button" class="btn btn-success" onclick="submitForm(<?php echo $row['id_team']; ?>)"> Guardar cambios </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +145,7 @@
                     </td>
                 </tr>
                 <?php
-                }
+            }
             ?>
                 <tr> 
                     <td> ... </td>
@@ -143,20 +155,45 @@
                     <td> <a class="btn btn-primary" href="team-register.php?id_league=<?php echo $id_league?>"> Agregar equipo </a> </td>
                 </tr>
             <?php
-            }
+        } else {
+            ?>
+            <tr> 
+                <td colspan="4"> No se encontraron equipos para esta liga </td>
+                <td>
+                    <a class="btn btn-primary" href="team-register.php?id_league=<?php echo $id_league?>"> Agregar equipo </a>
+                </td>
+            </tr>
+            <?php
+        }
 
-            else {
-                ?>
-                <tr> 
-                    <td colspan="4"> No se encontraron equipos para esta liga </td>
-                    <td>
-                        <a class="btn btn-primary" href="team-register.php?id_league=<?php echo $id_league?>"> Agregar equipo </a>
-                    </td>
-                </tr>
-                <?php
-            }
+        if ($showWarningModal) {
+            echo '<script>
+                    window.onload = function() {
+                        var warningModal = new bootstrap.Modal(document.getElementById("warningModal"));
+                        warningModal.show();
+                    };
+                  </script>';
+            ?>
+            <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title w-100 text-center text-danger" id="warningModalLabel"> <i class="bi bi-exclamation-circle-fill"></i> Eliminación denegada </h3>
+                        </div>
+                        <div class="modal-body fw-bolder">
+                            No se puede eliminar el equipo <?php echo $warningTeamName; ?> porque tiene miembros asociados.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
 
         // Cerramos la declaración preparada
         $stmt->close();
+        }
     }
+    
 ?>
