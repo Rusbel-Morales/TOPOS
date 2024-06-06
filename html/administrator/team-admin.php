@@ -14,7 +14,7 @@
         // Obtenemos el resultado de la declaración preparada
         $result = $stmt->get_result();
         $league_name = "";
-        if ($result->num_rows == 0) {
+        if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $league_name = $row['name'];
         }
@@ -24,6 +24,7 @@
       }
     }
   ?>
+
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -41,55 +42,57 @@
       
       <!-- JavaScript  -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"> </script>
+
+      <!-- External JavaScript file -->
+       <script src="../../scripts/forms/form-league-register.js"> </script>
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Ligas</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Reserva de eventos</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Estadísticas</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
-  <div class="container-fluid pt-3 mt-5 text-center">
-    <div class="row justify-content-center mx-1">
-        <div class="card col-sm-8 col-md-12 col-lg-10 col-xl-8">
-            <div class="card-body">
-                <h2 class="card-title mb-4 fw-bolder"><b>Equipos inscritos</b></h2>
-                <div class="table-responsive">
-                    <table class="table table-dark table-striped table-bordered align-middle">
-                        <thead>
-                            <tr>
-                                <th> #</th>
-                                <th> Nombre de equipo </th>
-                                <th> Nombre de capitán </th>
-                                <th> Estado del equipo </th>
-                                <th> Opciones </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          <?php include '../../php/show-team-table.php'; ?>
-                        </tbody>
-                    </table>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Ligas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reserva de eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statistics.php">Estadísticas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid pt-3 mt-5 text-center">
+        <div class="row justify-content-center mx-1">
+            <div class="card col-sm-8 col-md-12 col-lg-10 col-xl-8">
+                <div class="card-body">
+                    <h2 class="card-title mb-4 fw-bolder"><b>Equipos inscritos</b></h2>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th> #</th>
+                                    <th> Nombre de equipo </th>
+                                    <th> Nombre de capitán </th>
+                                    <th> Estado del equipo </th>
+                                    <th> Opciones </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php include '../../php/show-team-table.php'; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-  </div>
 </body>
 </html>
 <?php

@@ -4,7 +4,7 @@
     # Editar una fila 
     if (isset($_POST['editLeague'])) {
         $editLeague = $_POST['editLeague']; 
-        $name = $_POST['name'];
+        $name = $_POST['league_name'];
         $date = $_POST['date'];
         $date2 = $_POST['date2'];
 
@@ -41,20 +41,17 @@
     // Mostrar todo el contenido de la base de datos
     $sql = "SELECT * FROM league";
     $result = $conn->query($sql);
-    
+    $cont = 1;
     if ($result->num_rows > 0) { 
         while ($row = $result->fetch_assoc()) {
             ?>
 
             <!-- html -->
             <tr>
-                <td> <?php echo $row['id_league'] ?> </td>
+                <td> <?php echo $cont; ?> </td>
                 <td> <?php echo $row['name'] ?> </td>
                 <td> <?php echo $row['date_i'] ?> </td>
                 <td> <?php echo $row['date_e'] ?> </td>
-                <td>
-                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#details<?php echo $row['id_league'] ?>"> <i class="bi bi-list-ul"> </i> </button>   
-                </td>    
                                                 
                 <!-- Esta parte está terminado -->
                 
@@ -72,45 +69,40 @@
                                 </div>
 
                                 <!-- Formulario dentro de la ventana emergente  -->
-                                <form class="text-dark" method="post">
-                                    <div class="form-group mt-3">
+                                <form class="text-dark" name="form" method="post" action="">
+                                    <div class="form-group mt-3 input-control">
                                         <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre </label>
                                         <div class="row justify-content-center"> 
                                             <div class="col-8">
-                                                <input type="text" class="form-control text-center" id="formGroupExampleInput" name="name" placeholder="Nombre de liga" value="<?php echo $row['name'] ?>" required>
+                                                <input type="text" class="form-control text-center" id="formGroupExampleInput" name="league_name" placeholder="Nombre de liga" value="<?php echo $row['name'] ?>" required>
                                             </div>                                
                                         </div>
+                                        <div class="error"> </div>
                                     </div>
-                                    <div class="form-group mt-3">
+                                    <div class="form-group mt-3 input-control">
                                         <label for="formGroupExampleInput2" class="fw-bold mb-1"> Fecha de inicio </label>
                                         <div class ="row justify-content-center">
                                             <div class="col-8">
                                                 <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date" placeholder="Selecciona una fecha" value="<?php echo $row['date_i'] ?>" required>
                                             </div>
                                         </div>
+                                        <div class="error"> </div>
                                     </div>
-                                    <div class="form-group mt-3">
+                                    <div class="form-group mt-3 input-control">
                                         <label for="formGroupExampleInput2" class="fw-bold mb-1"> Fecha de término </label>
                                         <div class="row justify-content-center">
                                             <div class="col-8">
                                                 <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date2" placeholder="Selecciona una fecha" value="<?php echo $row['date_e'] ?>" required>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <label for="formGroupExampleInput2" class="fw-bold mb-1"> Reglas de liga </label>
-                                        <div class="row justify-content-center">
-                                            <div class="col-8">
-                                                <input type="text" class="form-control text-center" id="formGroupExampleInput2" name="details" placeholder="..." value="<?php echo $row['details'] ?>" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer mt-4">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                                        <input type="hidden" name="editLeague" value="<?php echo $row['id_league']?>">
-                                        <button type="submit" class="btn btn-success"> Guardar cambios </button>
+                                        <div class="error"> </div>
                                     </div>
                                 </form>
+                                <div class="modal-footer mt-4">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                                    <input type="hidden" name="editLeague" value="<?php echo $row['id_league']?>">
+                                    <button type="submit" class="btn btn-success" onclick="submitForm()"> Guardar cambios </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -147,16 +139,16 @@
                         </div>
 
                     <!-- El signo de ? indica el comienzo de la cadena de consula, es decir, pasa un parámetro a otra página a través de la URL-->
-                    <a class="btn btn-warning" href="team-admin.php?id_league=<?php echo $row['id_league'] ?>"> <i class="bi bi-shield-fill"></i> </i> Administrar equipos </a>
+                    <a class="btn btn-warning" href="team-admin.php?id_league=<?php echo $row['id_league'] ?>"> <i class="bi bi-shield-fill"></i> </i> Administrar equipo </a>
                 </td>
             </tr>
             <?php
+            $cont++;
         }
         ?>
 
         <!-- Ultima botón  -->
         <tr> 
-            <td> ... </td>
             <td> ... </td>
             <td> ... </td>
             <td> ... </td>

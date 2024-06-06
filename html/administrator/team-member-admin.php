@@ -58,7 +58,7 @@
                 <a class="nav-link" href="#"> Reserva de eventos </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"> Estadísticas </a>
+                <a class="nav-link" href="statistics.php"> Estadísticas </a>
               </li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
 <?php
     require 'databases.php';
-
+    session_start();
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -17,11 +17,14 @@
             $datauser = $result->fetch_assoc();
     
             if ($password === $datauser['password']) {
-                header("Location: ../html/administrator/league-admin.php");
+                $_SESSION["username"] = $username;  
+                $_SESSION["logged"] = true;
+                header("Location: ../html/administrator/admin.php");
                 exit;
             }
             else {
                 echo "Usuario o contraseña incorrecta";
+                $_SESSION["logged"] = false;
                 exit;
             }
         }

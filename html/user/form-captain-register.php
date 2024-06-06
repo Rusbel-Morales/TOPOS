@@ -107,7 +107,7 @@
                 </div>           
             </form>
             <div class="row justify-content-center">
-                <div class="col-9">
+                <div class="col-9">     
                     <button class="btn btn-primary mt-5 w-100" onclick="submitForm()"> Registrarse </button>
                 </div>
             </div>

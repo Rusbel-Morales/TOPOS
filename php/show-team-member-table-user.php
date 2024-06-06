@@ -68,7 +68,7 @@ if ($stmt->execute()) {
         while ($row = $result->fetch_assoc()) {
             ?>
             <tr> 
-                <td> <?php echo $cont   ?> </td>
+                <td> <?php echo $cont; ?> </td>
                 <td> <?php echo $row['full_name'] ?> <?php echo ($cont == 1) ? "<i class='bi bi-star-fill fs-5' style='color: #ffbf00; margin-left: 5px'>" : '' ?> </i> </td>
                 <td> <?php echo $row['email'] ?> </td>
                 <td> <?php echo $row['age'] ?> </td>
@@ -183,21 +183,80 @@ if ($stmt->execute()) {
             <td> ... </td>
             <td> ... </td>
             <td>                 
-                <a class="btn btn-primary" href="member-register-user.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#method" type="button"> Agregar jugador </button>
+
+                <!-- Modal  -->
+                <div class="modal fade" id="method" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-1 text-dark w-100" id="msg-color"> <i class="bi bi-edit"></i> <span id="title"> Método de agregación </span> </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                            </div>
+
+                            <!-- Formulario dentro de la ventana emergente  -->
+                            <form class="text-dark" method="post">
+                                <div class="form-group mt-3">
+                                    <label for="formGroupExampleInput" class="fw-bold mb-3"> ¿Cómo desea agregar un miembro de equipo? </label>
+                                    <div class="row justify-content-center">
+
+                                        <!-- Botón  -->
+                                        <div class="col-6">
+                                            <button class="btn btn-primary my-2 lh-sm" data-bs-toggle="modal" data-bs-target="#email" type="button"> Por invitación </button>
+                                        </div>
+
+                                        <!-- Párrafo  -->
+                                        <div class="col-8">
+                                            <p> Proporcionarás un correo electrónico de la persona a quien deseas invitar a unirse. Se le enviará un formulario para que el mismo complete sus datos. </p>                         
+                                        </div>
+
+                                        <!-- Botón -->
+                                        <div class="col-6"> 
+                                            <a class="btn btn-primary my-2 lh-sm" href="member-register-user.php?id_team=<?php echo $id_team; ?>"> Inscripción completa </a>
+                                        </div>
+
+                                        <!-- Párrafo  -->
+                                        <div class="col-8 mb-4">
+                                            <p> Tu mismo proporcionarás los datos de la persona que desees invitar a unirse. Tome en cuenta que estos datos deben de ser <b> 100% reales para evitar problemas de permanencia en la liga</b>  . </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </td>
         </tr>
+
+        <!-- 2da ventana emergente para proporcionar un correo electrónico de invitación -->
+        <div class="modal fade" id="email" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 text-dark w-100" id="msg-color"> <span> Proporciona un correo <br> electrónico </span> <i class="bi bi-pencil-fill text-dark fs-3"></i> </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                    </div>
+
+                    <!-- Formulario dentro de la ventana emergente  -->
+                    <form class="text-dark" name="form" method="post" action="../../php/mail.php?id_team=<?php echo $id_team; ?>">  <!-- Agregamos el 'id_team' para saludar al miembro invitado con el nombre del capitán -->
+                        <div class="form-group mt-3 input-control">
+                            <div class="row justify-content-center">
+                                <div class="col-8">
+                                    <input type="email" class="form-control text-center mb-2" name="email" placeholder="Ingrese un correo electrócnico válido">
+                                </div> 
+                            </div>
+                            <div class="error"></div>
+                        </div>
+                    </form>
+                    <div class="modal-footer my-1 text-center justify-content-center">
+                        <button type="submit" class="btn btn-success" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar invitación </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php
     } 
-    else {
-        ?>
-        <tr> 
-            <td colspan="6"> No se encontraron jugadores para este equipo </td>
-            <td>
-                <a class="btn btn-primary" href="member-register-user.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
-            </td>
-        </tr>
-        <?php
-    }
 
     // Cerramos la declaración preparada
     $stmt->close();

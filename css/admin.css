@@ -14,8 +14,8 @@ body {
     color: #FFA500;
 }
 
-#msg-color span {
-    color: #FFA500;
+#title {
+    color: #0e7e0e;
 }
 
 /* Estilos para la verificación de datos del formulario */

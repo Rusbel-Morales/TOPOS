@@ -19,69 +19,54 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- external JavaScript file  -->
-    <script src="../../scripts/addRow.js"> </script>
-    <script src="../../scripts/submitForm.js"></script>
+    <script src="../../scripts/forms/form-league-register.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand"> <i class="bi bi-file-text"></i> Registro de liga </a>
         </div>
       </nav>
 
-      <div class="container-fluid d-flex justify-content-center align-items-center margin">
+      <div class="container-fluid d-flex justify-content-center align-items-center mt-5">
         <div class="col-8 bg-white p-4 text-center"> 
             <h2> Crear nueva liga ⚽ </h2>
-            <form method="post" id="Form" action="../../php/add-league.php">
-                <div class="form-group mt-3">
-                    <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre </label>
+            <form method="post" name="form" action="../../php/add-league.php">
+                <div class="form-group mt-3 input-control">
+                    <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre de la liga </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <input type="text" class="form-control text-center" name="name" id="formGroupExampleInput" placeholder="Nombre de liga" required autofocus>
+                            <input type="text" class="form-control text-center" name="league_name" id="formGroupExampleInput" placeholder="Nombre de liga" required autofocus>
                         </div>
                     </div>
+                    <div class="error"> </div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput2" class="fw-bold mb-1"> Fecha de inicio </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
                             <input type="datetime-local" class="form-control text-center" name="date" id="formGroupExampleInput2" placeholder="Selecciona una fecha" required>
                         </div>
                     </div>
+                    <div class="error"> </div>
                 </div>
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput3" class="fw-bold mb-1"> Fecha de término </label>
                     <div class="row justify-content-center">
                         <div class="col-8">
                             <input type="datetime-local" class="form-control text-center" name="date2" id="formGroupExampleInput3" placeholder="Selecciona una fecha" required>
                         </div>
                     </div>
+                    <div class="error"> </div>
                 </div>
-                <div class="form-group mt-3">
-                    <label for="formGroupExampleInput4" class="fw-bold mb-3"> Reglas de liga </label>
-                    <div class="row justify-content-center">
-                        <div class="col-12 table-responsive">
-                            <table class="table table-bordered border-dark"> 
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th> # </th>
-                                        <th class="col-3"> Descripción </th>
-                                        <th> Detalles </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="rules">
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> <input type="text" name="description[]" class="form-control text-center" required> </td>
-                                        <td> <input type="text" name="details[]" class="form-control text-center" required> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="form-group mt-5"> 
+                    <div class="row justify-content-center"> 
+                        <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center">
+                            <img src="../../Images/DSC_5115.JPG" alt="EQUIPO" class="img-fluid" width="400" height="300">
                         </div>
                     </div>
                 </div>
             </form>
-            <button type="submit" class="btn btn-primary" onclick="addRow()"> Agregar reglas de liga </button>
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                     <button class="btn btn-success mt-5 w-100" href="#" onclick="submitForm()"> <i class="bi bi-check-circle-fill me-1"></i> Enviar registro </button>

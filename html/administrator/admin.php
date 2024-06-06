@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
-    header("Location: login.php");
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +7,8 @@ if (!isset($_SESSION['admin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="../../css/homepage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
 </head>
@@ -36,16 +32,19 @@ if (!isset($_SESSION['admin'])) {
     </nav>
     <main class="main-content">
         <div class="overlay">
-            <h1>Soy Admin</h1>
+            <?php echo '<h1>Bienvenido, </h1>' . $_SESSION['username']; ?>
         </div>
     </main>
-    <section class="estadisticas">
+    </section>
+
+<section class="estadisticas">
+<h1 id="insana2">  POSICIONES</h1>
 
   <div class="container mt-5">
     <table id="tablaequipo" class="table table-striped" style="width:100%">
         <thead class="bg-warning">
             <tr>
-                <th>id_equipo</th>
+                <th>Posición</th>
                 <th>Equipo</th>
                 <th>PJ</th>
                 <th>G</th>
@@ -59,7 +58,7 @@ if (!isset($_SESSION['admin'])) {
         </thead>
         <tbody>
             <?php
-            include_once 'conexion.php';
+            include_once '../../php/conexion.php';
 
             $objeto = new Conexion();
             $conexion = $objeto->Conectar();
@@ -88,7 +87,14 @@ if (!isset($_SESSION['admin'])) {
             ?>
         </tbody>
     </table>
+    
 </div>
+
+<div id="multi">
+<input class="boton_esta" id="enviar" type="submit" value="Ver estadisticas">
+</div>
+</section>
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
@@ -99,22 +105,25 @@ if (!isset($_SESSION['admin'])) {
         $('#tablaequipo').DataTable();
     });
 </script>
+
 </section>
 
-<section class = "ligas">
-<div class="container mt-5">
+<section class="ligas">
+<h1 id="insana2">  Ligas</h1>
+
+  <div class="container mt-5">
     <table id="tablaliga" class="table table-striped" style="width:100%">
         <thead class="bg-warning">
             <tr>
-                <th>id_liga</th>
-                <th>Liga</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Final</th>
+                <th>Posición</th>
+                <th>Equipo</th>
+                <th>PJ</th>
+                <th>G</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            include_once 'conexion.php';
+            include_once '../../php/databases.php';
 
             $objeto = new Conexion();
             $conexion = $objeto->Conectar();
@@ -122,22 +131,29 @@ if (!isset($_SESSION['admin'])) {
             $consulta = "SELECT * FROM league";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
-            $equipo = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $liga = $resultado->fetchAll(PDO::FETCH_ASSOC);
             
-            foreach ($league as $ligas) {
+            foreach ($liga as $ligas) {
             ?>
             <tr>
-                <td> <?php echo $ligas['id_league'] ?> </td>
-                <td> <?php echo $ligas['name'] ?> </td>
-                <td> <?php echo $ligas['date_i'] ?> </td>
-                <td> <?php echo $ligas['date_e'] ?> </td>
+                <td><?php echo $ligas['id_league']; ?></td>
+                <td><?php echo $ligas['name']; ?></td>
+                <td><?php echo $ligas['date_i']; ?></td>
+                <td><?php echo $ligas['date_e']; ?></td>
             </tr>
             <?php
             }
             ?>
         </tbody>
     </table>
+    
 </div>
+
+<div id="multi">
+<input class="boton_esta" id="enviar" type="submit" value="Ver ligas">
+</div>
+</section>
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
@@ -148,6 +164,6 @@ if (!isset($_SESSION['admin'])) {
         $('#tablaliga').DataTable();
     });
 </script>
-</section>
+
 </body>
 </html>

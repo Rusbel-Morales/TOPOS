@@ -1,4 +1,4 @@
-// Función que valida los aspectos del formulario del archivo member-register
+// Función que valida los aspectos del formulario del archivo "member-register"
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementsByName('form')[0];
@@ -84,8 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (phoneValue === '') {
             setError(phone, 'Por favor, ingrese un teléfono de contacto');
             valid = false;
-        } else if (phoneValue.length < 10 || phoneValue > 10) {
+        } else if (phoneValue.length < 10 || phoneValue.length > 10) {
             setError(phone, 'El número telefónico debe ser de 10 dígitos');
+            valid = false;
         } else {
             setSuccess(phone);
         }

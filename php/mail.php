@@ -1,53 +1,120 @@
 <?php
-//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+    //Import PHPMailer classes into the global namespace
+    //These must be at the top of your script, not inside a function
+    require 'databases.php';
 
-//Load Composer's autoloader
-require '../phpmailer/Exception.php';
-require '../phpmailer/PHPMailer.php';
-require '../phpmailer/SMTP.php';
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
+    //Load Composer's autoloader
+    require '../phpmailer/Exception.php';
+    require '../phpmailer/PHPMailer.php';
+    require '../phpmailer/SMTP.php';
 
-try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'rusbelmoralesmendez@gmail.com';                     //SMTP username
-    $mail->Password   = 'rzbe appc jdpv zfgy';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    // Obtenemos el correo electrónico correspondiente
 
-    //Recipients
-    $mail->setFrom($mail->Username, 'Madriguera FC');
-    $mail->addAddress('rusbelalejandrom@gmail.com ', 'Rusbel');     //Add a recipient
-    $mail->addAddress('ellen@example.com');               //Name is optional
-    $mail->addReplyTo('rusbelmoralesmendez@gmail.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
+    if (isset($_GET['id_team'])) {
+        $id_team = $_GET['id_team'];
+        $email = $_POST['email'];
 
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+        $sql = "SELECT full_name FROM team_member WHERE id_team = ? LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_team);
+        if ($stmt->execute()) {
 
-    //Content
-    $mail->isHTML(true);    
-    $mail->CharSet = 'UTF-8';                              //Set email format to HTML
-    $mail->Subject = 'Invitación de equipo';
-    $mail->Body    = 'Hola, mi nombre es <b> Rusbel Alejandro Morales Méndez </b>';
+            // Obtenemos el nombre del capitán
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
 
-    // Vista previa de nuestro correo electrónico
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            // Cerramos la consulta preparada
+            $stmt->close();
+        }
 
-    //Enviar el correo electrónico 
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-} 
+        // Obtener el nombre del capitán del equipo para el saludo 
+        $full_name = $row['full_name'];
+
+        // Obtener el nombre del equipo 
+        $sql = "SELECT team_name FROM team WHERE id_team = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_team);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            // Cerramos la consulta preparada 
+            $stmt->close();
+        }
+
+        $team_name = $row['team_name'];
+    }
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'rusbelmoralesmendez@gmail.com';                     //SMTP - Debería usarse un correo de la organización
+        $mail->Password   = 'cmrn ftud tndl nroq';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom($mail->Username, 'Madriguera FC');
+        $mail->addAddress($email);     //2do parámetro que determina a que nombre va dirigido
+        $mail->addReplyTo($mail->Username, $full_name);
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        //Attachments Enviar archivos adjuntos
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);    
+        $mail->CharSet = 'UTF-8';                              //Set email format to HTML
+        $mail->Subject = 'Invitación a equipo'; // Asunto del correo
+
+        // El mensaje que entregará en HTML
+        $mail->Body = "
+            <html>
+            <head>
+                <style>
+                    .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        margin: 20px 0;
+                        font-size: 16px;
+                        color: #ffffff;
+                        background-color: #28a745;
+                        text-align: center;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                </style>
+            </head>
+            <body>
+                <p> Hola, mi nombre es {$full_name} y quiero invitarte a que seas parte de mi equipo de futbol: {$team_name} 😎⚽. </p>
+                <p> Solo necesitas dar click en el siguiente botón: </p>
+                <a href='https://ccc9-148-241-225-70.ngrok-free.app/Proyecto Topos/html/user/member-register-user.php?id_team={$id_team}' class='button'> Unirse al equipo </a>
+                <p> Si no obtengo respuestas de tu parte en los próximos días invitaré a otras personas. </p>
+            </body>
+            </html>";
+        
+        // Vista previa de nuestro correo electrónico
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        //Enviar el correo electrónico 
+        $mail->send();
+        echo 'Mensaje enviado con éxito';
+        // header("Location: ../html/user/team-member-user.php");
+        // exit();
+    } 
+    catch (Exception $e) {
+        echo "No se ha podido enviar el mensaje. Mailer Error: {$mail->ErrorInfo}";
+    } 

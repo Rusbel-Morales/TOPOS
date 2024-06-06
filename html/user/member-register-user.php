@@ -53,8 +53,8 @@
     
     <div class="container-fluid d-flex justify-content-center align-items-center margin">
         <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 bg-white p-4 text-center"> 
-            <h2> Crear nuevo miembro ⚽ </h2>
-            <form method="post" name="form" action="../../php/add-member.php" novalidate>
+            <h2> Añadir miembro ⚽ </h2>
+            <form method="post" name="form" action="../../php/add-member-user.php" novalidate>
                 <input type="hidden" name="id_team" value="<?php echo $id_team; ?>">
                 <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre completo </label>
@@ -98,18 +98,6 @@
                         <div class="col-8">
                             <input type="text" class="form-control text-center" name="phone" id="formGroupExampleInput3" placeholder="Inserte un telefono de contacto">
                         </div>
-                    </div>
-                    <div class="error"></div>
-                </div>
-                <div class="form-group mt-3 input-control">
-                    <label for="formGroupExampleInput3" class="fw-bold mb-1"> Estado </label>
-                    <div class="row justify-content-center">
-                        <div class="col-8">
-                            <!-- Campo oculto para enviar el estado  -->
-                            <input type="hidden" name="state" value="Inactivo">
-                            <!-- Campo de entrada deshabilitado  -->
-                            <input type="text" class="form-control text-center" id="formGroupExampleInput3" placeholder="Inactivo" disabled>
-                        </div> 
                     </div>
                     <div class="error"></div>
                 </div>

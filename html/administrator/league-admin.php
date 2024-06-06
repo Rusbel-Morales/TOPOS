@@ -20,6 +20,7 @@
     
     <!--External JavaScript file-->
     <script src="../../scripts/alerts.js"></script>
+    <script src="../../scripts/forms/form-league-register.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,7 +38,7 @@
                 <a class="nav-link" href="#"> Reserva de eventos </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"> Estadísticas </a>
+                <a class="nav-link" href="statistics.php"> Estadísticas </a>
               </li>
             </ul>
           </div>
@@ -57,7 +58,6 @@
                                 <th> Nombre de liga </th>
                                 <th> Fecha de inicio </th>
                                 <th> Fecha de término </th>
-                                <th> Reglas de liga </th>
                                 <th> Opciones </th>
                             </tr>
                         </thead>

@@ -131,10 +131,10 @@
                         <div class="col-8">
                             <select class="form-control text-center" name="additional" id="">
                                 <option value="" disabled selected> Selecciona una opción </option>
-                                <option value="redes_sociales_de_la_liga"> Redes Sociales de la Liga </option>
-                                <option value="redes_sociales_de_Topos_FC"> Redes Sociales de Topos FC </option>
-                                <option value="invitacion_indirecta"> Invitación Directa </option>
-                                <option value="publicidad_fisica"> Publicidad Física </option>
+                                <option value="Redes Sociales de la Liga"> Redes Sociales de la Liga </option>
+                                <option value="Redes Sociales de Topos FC"> Redes Sociales de Topos FC </option>
+                                <option value="Invitación Directa"> Invitación Directa </option>
+                                <option value="Publicidad Física"> Publicidad Física </option>
                             </select>
                         </div>
                     </div>
