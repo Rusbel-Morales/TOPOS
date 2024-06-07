@@ -42,6 +42,7 @@
     <!-- Espaciador para evitar que el contenido se solape con la barra de navegación fija -->
     <!-- Botones de acceso para las diferentes tablas  -->
     <div class="container mt-5">
+        <p class="text-center fw-bolder fs-2 mb-4 text-white"> Selecciona la liga </p>
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <select id="league-select" class="form-select text-center">
@@ -97,7 +98,6 @@
                     <table class="table table-striped table-hover table-dark text-light table-bordered align-middle" id="adm">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Posición</th>
                                 <th>Equipo</th>
                                 <th>PJ</th>
@@ -108,7 +108,6 @@
                                 <th>GC</th>
                                 <th>DG</th>
                                 <th>PTS</th>
-                                <th class="text-center"><i class="bi bi-pencil"></i></th>
                             </tr>
                         </thead>
                         <tbody id="position-table">
@@ -230,12 +229,13 @@
                                     <!-- opciones del equipo 2 -->
                                 </select>
                             </div>
+                            <div class="addDiv"> </div>
 
                         </div> 
 
                         <div class="row justify-content-center mt-4">
                             <div class="col d-flex justify-content-center">
-                                <button class="btn btn-primary" type="button" onclick="agregarGol('1')">Agregar registro de gol ⚽</button>
+                                <button class="btn btn-primary" type="button" onclick="agregarGol()">Agregar registro de gol ⚽</button>
                             </div>
                         </div>
                         <button class="btn btn-success mt-5" type="submit"><i class="bi bi-check-circle-fill me-1"></i> Agregar partido </button>
@@ -247,45 +247,48 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../../scripts/addDiv.js"></script>
-    <script src="../../scripts/forms/form-register-match.js"></script>
-    <script>
-    function modificar(arreglo){
-        cadena = arreglo.split(',');
-        alert(arreglo);
-        $("#id_team_").val(cadena[0]);
-        document.getElementById("id_eli").textContent = 'ID: ' + cadena[0];
-        $("#team_name_").val(cadena[2]);
-        $("#pj_").val(cadena[3]);
-        $("#g_").val(cadena[4]);
-        $("#e_").val(cadena[5]);
-        $("#p_").val(cadena[6]);
-        $("#gf_").val(cadena[7]);
-        $("#gc_").val(cadena[8]);
-        $("#dg_").val(cadena[9]);
-        $("#pts_").val(cadena[10]);
-    }
+    <!-- <script src="../../scripts/addDiv.js"></script> -->
+    <script> 
+    function agregarGol() {
+    // Obtener el contenedor donde se agregarán las nuevas entradas
+    const contenedor = document.querySelector('.form-group');
 
-    $('#modificar_adm').click(function (){
-    var recolec = $('#for_adm').serialize();
-    alert(recolec);
-    $.ajax({
-        url:'..administrator/adm_mod.php',
-        type: 'POST',
-        data: recolec,
+    // Crear un nuevo div para las entradas
+    const nuevoDiv = document.createElement('div');
+    nuevoDiv.classList.add('row', 'justify-content-center', 'align-items-center', 'mt-2');
 
-        success:function(variable){
-            $('#adm').load('administrator/statistics.php #adm');
-            $('#modificar').modal('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').hide();
+    // Agregar las entradas para el número de goles y el jugador responsable
+    nuevoDiv.innerHTML = `
+        <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+            <label class="fw-bold mb-1">Número de gol(es)</label>
+            <input class="form-control text-center" type="number" min="0" name="num-gol1">
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+            <label class="fw-bold mb-1">Jugador</label>
+            <select class="form-select text-center w-100" name="player1">
+                <!-- Aquí deberías insertar las opciones de jugadores dinámicamente -->
+            </select>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+            <label class="fw-bold mb-1">Número de gol(es)</label>
+            <input class="form-control text-center" type="number" min="0" name="num-gol2">
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+            <label class="fw-bold mb-1">Jugador</label>
+            <select class="form-select text-center w-100" name="player2">
+                <!-- Aquí deberías insertar las opciones de jugadores dinámicamente -->
+            </select>
+        </div>
+    `;
 
-        }    
-    })
-    });
+    // Insertar el nuevo div después del último div que contiene las primeras cuatro entradas
+    const divsPrincipales = document.querySelectorAll('.form-group > .row');
+    const ultimoDivPrincipal = divsPrincipales[divsPrincipales.length - 1];
+    ultimoDivPrincipal.parentNode.insertBefore(nuevoDiv, ultimoDivPrincipal.nextSibling);
+}
+
 
     </script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const btnPosition = document.getElementById("btn-position-table");
@@ -425,7 +428,6 @@
                 changeGoalscorerTable(this.value);
                 changeTeam1(this.value);
                 changeTeam2(this.value);
-                console.log(this.value);
                 updateJugadorResponsableState();
             });
 

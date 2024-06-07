@@ -40,7 +40,7 @@ session_start();
    </nav>
     <main class="main-content">
         <div class="overlay">
-            <?php echo '<h1>Bienvenido, </h1>' . $_SESSION['username']; ?>
+            <?php echo '<h1> Bienvenido </h1>' . $_SESSION['username']; ?>
         </div>
     </main>
     </section>

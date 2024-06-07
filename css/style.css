@@ -81,7 +81,7 @@
   display: flex;
   position: sticky;
   padding-left: 15px;
-  background-color: #200705c7;
+  background-color: black;
 }
 
 
@@ -114,14 +114,14 @@
   border-radius: 15px;
   border: none;
   cursor: pointer;
-  background-color: #ac735fc7 ;
+  background-color:  white;
   text-decoration: none;
-  color: floralwhite;
+  color: black;
   
 }
 
 .boton_nav:hover{
-  background-color: #8b5e4dc7;
+  background-color: rgba(225, 211, 211, 0.748);
 }
 
 #nav-list li a {
@@ -149,8 +149,9 @@
   align-items: center;
   padding: 10px;
   border: 1px solid #101010;
-  background-color: rgb(197, 163, 119);
+  background-color: #200705a0;
   border-radius:8px ;
+  color: white;
 
   
 }
@@ -170,7 +171,7 @@
 }
 
 .proximos{
-  background-color: burlywood;
+  background-color: rgb(226, 214, 214);
 }
 
 /*Fin de la barra de navegacion*/
@@ -228,6 +229,7 @@ body {
 .match-content {
 	display: flex;
 	position: relative;
+  
 }
 
 .column {
@@ -290,6 +292,13 @@ body {
 	}
 }
 
+.esta{
+  background-color: whitesmoke;
+}
+
+.resultados{
+  background-color: whitesmoke;
+}
 .match-score-divider {
 	font-size: 28px;
 	font-weight: 700;
@@ -308,7 +317,8 @@ body {
 	right: 0;
 	bottom: 0;
 	width: 100%;
-	display: flex;
+	display: flex; 
+   
   
 
 }
@@ -448,7 +458,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 padding: 32px 0;
-background-color: rgba(164, 131, 87, 0.782);
+background-color: rgb(226, 214, 214);
 
 }
 
@@ -504,13 +514,14 @@ padding-bottom: 0px;
 
 
 
+
 /* Galeria de imagenes. */
 
 .cancha{
 display: flex;
 justify-content: center;
 align-items: center;
-background: burlywood;
+background: rgb(226, 214, 214);
 width: 100%;
 min-height: 100vh;
 }

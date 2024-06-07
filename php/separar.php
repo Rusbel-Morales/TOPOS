@@ -39,7 +39,6 @@ if (isset($_GET['id_league'])) {
             $arreglo =  $consulta['id_team'].','.$posicion.','.$consulta['team_name'].','.$consulta['pj'].','.$consulta['g'].','.$consulta['e'].','.$consulta['p'].','.$consulta['gf'].','.$consulta['gc'].','.$consulta['dg'].','.$consulta['pts'];
 
             echo "<tr>
-                    <td>{$consulta['id_team']}</td>
                     <td>{$posicion}</td>
                     <td>{$consulta['team_name']}</td>
                     <td>{$consulta['pj']}</td>
@@ -50,9 +49,6 @@ if (isset($_GET['id_league'])) {
                     <td>{$consulta['gc']}</td>
                     <td>{$consulta['dg']}</td>
                     <td>{$consulta['pts']}</td>
-                    <td class='text-center'>
-                        <button type='button' data-bs-toggle='modal' data-bs-target='#modificar' class='btn btn-success' onclick=\"modificar('{$arreglo}')\">Editar</button>
-                    </td>
                   </tr>";
 
             $posicion++;
