@@ -55,12 +55,12 @@
 
     try {
         //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'rusbelmoralesmendez@gmail.com';                     //SMTP - Debería usarse un correo de la organización
-        $mail->Password   = 'cmrn ftud tndl nroq';                               //SMTP password
+        $mail->Username   = 'rodolfoperezrodriguez848@gmail.com';                     //SMTP - Debería usarse un correo de la organización
+        $mail->Password   = 'zuvk wewm iktj yjwt';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -101,19 +101,18 @@
             <body>
                 <p> Hola, mi nombre es {$full_name} y quiero invitarte a que seas parte de mi equipo de futbol: {$team_name} 😎⚽. </p>
                 <p> Solo necesitas dar click en el siguiente botón: </p>
-                <a href='https://ccc9-148-241-225-70.ngrok-free.app/Proyecto Topos/html/user/member-register-user.php?id_team={$id_team}' class='button'> Unirse al equipo </a>
+                <a href='https://59d3-148-241-225-70.ngrok-free.app/Proyecto Topos/html/user/member-register-user2.php?id_team={$id_team}' class='button'> Unirse al equipo </a>
                 <p> Si no obtengo respuestas de tu parte en los próximos días invitaré a otras personas. </p>
             </body>
             </html>";
         
         // Vista previa de nuestro correo electrónico
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->AltBody = 'Invitación de inscripción a equipo';
 
         //Enviar el correo electrónico 
         $mail->send();
-        echo 'Mensaje enviado con éxito';
-        // header("Location: ../html/user/team-member-user.php");
-        // exit();
+        header("Location: ../html/user/team-member-user.php?id_team=$id_team");
+        exit();
     } 
     catch (Exception $e) {
         echo "No se ha podido enviar el mensaje. Mailer Error: {$mail->ErrorInfo}";

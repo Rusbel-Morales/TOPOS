@@ -75,7 +75,7 @@
                     <div class="row justify-content-center">
                         <div class="col-9">
                             <select name="id_league" class="form-select text-center">
-                                <?php include '../../php/league.php'; ?>
+                                <?php include '../../php/league-va.php'; ?>
                             </select>
                         </div>
                     </div>
@@ -96,10 +96,10 @@
                         <div class="col-9">
                             <select  name="additional" class="form-select text-center">
                                 <option value="" disabled selected> Selecciona una opción </option>
-                                <option value="redes_sociales_de_la_liga"> Redes Sociales de la Liga </option>
-                                <option value="redes_sociales_de_Topos_FC"> Redes Sociales de Topos FC </option>
-                                <option value="invitacion_indirecta"> Invitación Directa </option>
-                                <option value="publicidad_fisica"> Publicidad Física </option>
+                                <option value="Redes Sociales de la Liga"> Redes Sociales de la Liga </option>
+                                <option value="Redes Sociales de Topos FC"> Redes Sociales de Topos FC </option>
+                                <option value="Invitación Directa"> Invitación Directa </option>
+                                <option value="Publicidad Física"> Publicidad Física </option>
                             </select>
                         </div>
                     </div>

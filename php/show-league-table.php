@@ -71,6 +71,7 @@
                 <td> <?php echo $row['name'] ?> </td>
                 <td> <?php echo $row['date_i'] ?> </td>
                 <td> <?php echo $row['date_e'] ?> </td>
+                <td> <?php echo $row['type'] ?></td>
                                                 
                 <!-- Esta parte está terminado -->
                 
@@ -112,6 +113,18 @@
                                         <div class="row justify-content-center">
                                             <div class="col-8">
                                                 <input type="datetime-local" class="form-control text-center" id="formGroupExampleInput2" name="date2" placeholder="Selecciona una fecha" value="<?php echo $row['date_e'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="error"> </div>
+                                    </div>
+                                    <div class="form-group mt-3 input-control">
+                                        <label for="formGroupExampleInput2" class="fw-bold mb-1"> Tipo </label>
+                                        <div class="row justify-content-center">
+                                            <div class="col-8">
+                                                <select name="type" class="form-control text-center" id="">
+                                                    <option value="Varonil" <?php echo ($row['type'] == "Varonil") ? "selected" : "" ?>> Varonil </option>
+                                                    <option value="Femenil" <?php echo ($row['type'] == "Femenil") ? "selected" : "" ?>> Femenil </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="error"> </div>
@@ -168,6 +181,7 @@
 
         <!-- Ultima botón  -->
         <tr> 
+            <td> ... </td>
             <td> ... </td>
             <td> ... </td>
             <td> ... </td>

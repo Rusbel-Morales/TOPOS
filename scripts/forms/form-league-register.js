@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const league_name = document.getElementsByName("league_name")[0];
     const date = document.getElementsByName("date")[0];
     const date2 = document.getElementsByName("date2")[0];
+    const type = document.getElementsByName("type")[0];
 
     window.submitForm = function () {
         if (validateInputs()) {
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const league_nameValue = league_name.value.trim();
         const dateValue = date.value.trim();
         const date2Value = date2.value.trim();
+        const typeValue = type.value.trim();
 
         // Validar league_name
         if (league_nameValue === '') {
@@ -71,6 +73,12 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 setSuccess(date2);
             }
+        }
+        if (typeValue === '') {
+            setError(type, 'El tipo de la liga es requerida');
+            valid = false;
+        } else {
+            setSuccess(type);
         }
 
         return valid;

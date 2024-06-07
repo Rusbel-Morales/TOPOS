@@ -2,7 +2,7 @@
     require 'databases.php';
 
     // Seleccionamos todas las ligas disponibles
-    $sql = "SELECT * FROM league";
+    $sql = "SELECT * FROM league WHERE type = 'Varonil'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         ?>

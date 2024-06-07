@@ -101,7 +101,7 @@ if ($stmt->execute()) {
                                 </form>
                                 <div class="modal-footer mt-4">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                                    <button type="submit" class="btn btn-success" onclick="submitForm(<?php echo $row['id_team_member']; ?>)"> Guardar cambios </button>
+                                    <button type="submit" class="btn btn-success" onclick="submitForm2(<?php echo $row['id_team_member']; ?>)"> Guardar cambios </button>
                                 </div>
                             </div>
                         </div>

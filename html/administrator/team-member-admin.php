@@ -88,6 +88,7 @@
                         <th> Colonia </th>
                         <th> Telefono <br> de contacto </th>
                         <th> Estado </th> 
+                        <th> Descubrimiento </th>
                         <th> Opciones </th>
                     </tr>
                 </thead>

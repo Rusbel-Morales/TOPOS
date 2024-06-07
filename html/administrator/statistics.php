@@ -183,70 +183,67 @@
     </div>
 
     <div class="container text-center my-5">
-    <div class="row justify-content-center">
-        <div class="card col-sm-8 col-md-12 col-lg-10 col-xl-8 pb-5">
-            <div class="card-body">
-                <h2 class="card-title fw-bolder"> Registrar partido </h2>
-            </div>
-            <form name="form" action="../../php/register-match.php" method="post">
-                <div class="form-group mt-3">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <label for="select-team-1" class="fw-bold mb-1"> Equipo 1 </label> 
-                            <select class="form-select text-center w-100" id="select-team-1" name="team1">
-                                <!-- opciones de elección de equipo 1 -->
-                            </select>
-                        </div>  
-                        <div class="col-auto">
-                            <p class="fw-bolder">VS</p>
+        <div class="row justify-content-center">
+            <div class="card col-sm-8 col-md-11 col-lg-11 col-xl-11 pb-5">
+                <div class="card-body">
+                    <h2 class="card-title fw-bolder"> Registrar partido </h2>
+                </div>
+                <form name="form" action="../../php/register-match.php" method="post">
+                    <div class="form-group mt-3">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                                <label for="select-team-1" class="fw-bold mb-1"> Equipo 1 </label> 
+                                <select class="form-select text-center w-100" id="select-team-1" name="team1">
+                                    <!-- opciones de elección de equipo 1 -->
+                                </select>
+                            </div>  
+                            <div class="col-auto align-center">
+                                <p class="fw-bolder">VS</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                                <label for="select-team-2" class="fw-bold mb-1"> Equipo 2 </label>
+                                <select class="form-select text-center w-100" id="select-team-2" name="team2">
+                                    <!-- opciones de elección de equipo 2 -->
+                                </select>
+                            </div>                                  
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <label for="select-team-2" class="fw-bold mb-1"> Equipo 2 </label>
-                            <select class="form-select text-center w-100" id="select-team-2" name="team2">
-                                <!-- opciones de elección de equipo 1 -->
-                            </select>
-                        </div>                                  
+
+                        <p class="fw-bolder mt-4 fs-5"> Registrar gol(es) por jugador </p>
+                        <div class="row justify-content-center align-items-center mt-2">
+                            <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+                                <label for="num-goles-1" class="fw-bold mb-1"> Número de gol(es) </label>
+                                <input class="form-control text-center" type="number" min="0" id="num-goles-1" name="num-gol-1">
+                            </div>  
+                            <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+                                <label for="jugador-responsable-1" class="fw-bold mb-1"> Jugador </label>
+                                <select class="form-select text-center w-100" id="jugador-responsable-1" name="player1">
+                                    <!-- opciones del equipo 1 -->
+                                </select>
+                            </div> 
+                            <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+                                <label for="num-goles-2" class="fw-bold mb-1"> Número de gol(es) </label>
+                                <input class="form-control text-center" type="number" min="0" id="num-goles-2" name="num-gol-2">
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-2 col-xl-3">
+                                <label for="jugador-responsable-2" class="fw-bold mb-1"> Jugador </label>
+                                <select class="form-select text-center w-100" id="jugador-responsable-2" name="player2">
+                                    <!-- opciones del equipo 2 -->
+                                </select>
+                            </div>
+
+                        </div> 
+
+                        <div class="row justify-content-center mt-4">
+                            <div class="col d-flex justify-content-center">
+                                <button class="btn btn-primary" type="button" onclick="agregarGol('1')">Agregar registro de gol ⚽</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-success mt-5" type="submit"><i class="bi bi-check-circle-fill me-1"></i> Agregar partido </button>
                     </div>
-
-                    <p class="fw-bolder mt-4 fs-5"> Registrar gol(es) por jugador </p>
-                    <div class="row justify-content-center align-items-center mt-2">
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <label for="select-team-2" class="fw-bold mb-1"> Número de gole(s) </label>
-                            <input class="form-control text-center" type="number" min="0" id="num-goles-1" name="num-gol-1">
-                        </div>  
-                        <div class="col-auto">
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <label for="select-team-2" class="fw-bold mb-1"> Número de gole(s) </label>
-                            <input class="form-control text-center" type="number" min="0" id="num-goles-2" name="num-gol-2">
-                        </div>                                  
-                    </div> 
-
-                    <div class="row justify-content-center align-items-center mt-4">    
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <label for="select-team-2" class="fw-bold mb-1"> Jugador </label>
-                            <select class="form-select text-center w-100" id="jugador-responsable-1" name="player1">
-                                <!-- opciones del equipo 1 -->
-                            </select>
-                            <button class="btn btn-primary mt-4" onclick="agregarGol('1')"> Agregar registro de gol ⚽ </button>
-                        </div>  
-                        <div class="col-auto">
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <label for="select-team-2" class="fw-bold mb-1"> Jugador </label>
-                            <select class="form-select text-center w-100" id="jugador-responsable-2" name="player2">
-                                <!-- opciones del equipo 2 -->
-                            </select>
-                            <button class="btn btn-primary mt-4" onclick="agregarGol('2')"> Agregar registro de gol ⚽ </button>
-                        </div>   
-
-                    </div>
-                    <button class="btn btn-success mt-5" onclick="submitForm()"><i class="bi bi-check-circle-fill me-1"></i> Agregar partido </button>
                 </form>
             </div>
+            </div>
         </div>
-    </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -321,11 +318,11 @@
                 jugadorResponsable2.disabled = !team2Selected;
 
                 if (!team1Selected) {
-                    jugadorResponsable1.innerHTML = '<option value="" disabled selected>Sin resultados</option>';
+                    jugadorResponsable1.innerHTML = '<option value="" disabled selected> Desactivado </option>';
                 }
 
                 if (!team2Selected) {
-                    jugadorResponsable2.innerHTML = '<option value="" disabled selected>Sin resultados</option>';
+                    jugadorResponsable2.innerHTML = '<option value="" disabled selected> Desactivado </option>';
                 }
             }
 

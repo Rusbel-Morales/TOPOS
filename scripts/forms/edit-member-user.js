@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Función que valida el formulario de edición de miembro
-    window.submitForm = function(memberId) {
+    window.submitForm2 = function(memberId) {
         const form = document.getElementsByName("form" + memberId)[0];
         const full_name = form.querySelector('[name="full_name"]');
         const email = form.querySelector('[name="email"]');

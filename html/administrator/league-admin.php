@@ -61,6 +61,7 @@
                                 <th> Nombre de liga </th>
                                 <th> Fecha de inicio </th>
                                 <th> Fecha de término </th>
+                                <th> Tipo </th>
                                 <th> Opciones </th>
                             </tr>
                         </thead>

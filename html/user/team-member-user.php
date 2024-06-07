@@ -37,7 +37,6 @@
     
     <!-- External CSS file -->
     <link rel="stylesheet" href="../../css/admin.css">
-    <link rel="stylesheet" href="../../css/alerts.css">
     
     <!-- JavaScript . Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -50,23 +49,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Administración de equipo </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"> Ligas </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> Reserva de eventos </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> Estadísticas </a>
-              </li>
-            </ul>
-          </div>
-        </div>
     </nav>
 
     <!-- Contenedor principal -->
@@ -104,33 +86,5 @@
 
     <!-- div en el que se insertan las alertas  -->
     <div id="toastBox" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
-
-    <!-- Notificaciones JavaScript -->
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var notification = '<?php echo $notification; ?>';
-            var notificationType = '<?php echo $notificationType; ?>';
-
-            if (notification) {
-                showToast(notification, notificationType);
-            }
-        });
-
-        function showToast(message, type) {
-            var toastContainer = document.getElementById('toastBox');
-            var toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.classList.add('show', type);
-            toast.setAttribute('role', 'alert');
-            toast.innerHTML = message;
-
-            toastContainer.appendChild(toast);
-
-            setTimeout(function() {
-                toast.classList.remove('show');
-                toastContainer.removeChild(toast);
-            }, 5000);
-        }
-    </script> -->
 </body>
 </html>

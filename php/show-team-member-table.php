@@ -59,6 +59,7 @@ if ($stmt->execute()) {
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['cologne'] ?> </td>
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['telephone_contact'] ?> </td>
                 <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['state'] ?> </td>
+                <td style="<?php echo ($row['state'] === 'Inactivo') ? 'background-color: #c92f2f;' : 'background-color: #5DAD27;' ?>"> <?php echo $row['additional'] ?> </td>
                 <td> 
                     <!-- Botón para editar -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id_team_member']?>"> <i class="bi bi-pencil-fill"> </i> </button>
@@ -133,6 +134,18 @@ if ($stmt->execute()) {
                                         </div>
                                         <div class="error"> </div>
                                     </div>
+                                        <label class="fw-bold mb-1"> ¿Cómo se enteró de la Liga "Madriguera"? </label>
+                                        <div class="row justify-content-center">
+                                            <div class="col-9">
+                                                <select  name="additional" class="form-control text-center">
+                                                    <option value="" disabled> Selecciona una opción </option>
+                                                    <option value="Redes Sociales de la Liga" <?php echo ($row['additional'] === "Redes Sociales de la Liga") ? "selected" : "" ?> > Redes Sociales de la Liga </option>
+                                                    <option value="Redes Sociales de Topos FC" <?php echo ($row['additional'] === "Redes Sociales de Topos FC") ? "selected" : "" ?>> Redes Sociales de Topos FC </option>
+                                                    <option value="Invitación Directa" <?php echo ($row['additional'] === "Invitación Directa") ? "selected" : "" ?>> Invitación Directa </option>
+                                                    <option value="Publicidad Física" <?php echo ($row['additional'] === "Publicidad Física") ? "selected" : "" ?>> Publicidad Física </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     <input type="hidden" name="editMember" value="<?php echo $row['id_team_member']; ?>">
                                     <input type="hidden" name="id_team" value="<?php echo $id_team; ?>">
                                 </form>
@@ -188,6 +201,7 @@ if ($stmt->execute()) {
             <td> ... </td>
             <td> ... </td>
             <td> ... </td>
+            <td> ... </td>
             <td>                 
                 <a class="btn btn-primary" href="member-register.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
             </td>
@@ -197,7 +211,7 @@ if ($stmt->execute()) {
     else {
         ?>
         <tr> 
-            <td colspan="7"> No se encontraron jugadores para este equipo </td>
+            <td colspan="8"> No se encontraron jugadores para este equipo </td>
             <td>
                 <a class="btn btn-primary" href="member-register.php?id_team=<?php echo $id_team; ?>"> Agregar jugador </a>
             </td>

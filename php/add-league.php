@@ -5,11 +5,12 @@
     $league_name = $_POST['league_name'];
     $date = $_POST['date'];
     $date2 = $_POST['date2'];
+    $type = $_POST['type'];
 
     // Preparamos la consulta SQL para evitar inyecciones
-    $sql = "INSERT INTO league (name, date_i, date_e) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO league (name, date_i, date_e, type) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $league_name, $date, $date2);
+    $stmt->bind_param("ssss", $league_name, $date, $date2, $type);
 
     if ($stmt->execute()) {
         // Obtener el "id" del último registro insertado

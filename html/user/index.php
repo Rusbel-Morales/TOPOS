@@ -184,7 +184,7 @@
             <div class="flip-card-back2">
               <h1>Liga masculina</h1>
               Lorem ipsum dolor 
-              <a class="botones" id="Registrar" href="form-captain-register.php">Registrar Equipo</a>
+              <a class="botones" id="Registrar" href="form-captain-register-fe.php">Registrar Equipo</a>
             </div>
         </div>
     </div>
@@ -199,7 +199,7 @@
             <div class="flip-card-back3">
               <h1>Liga femenina</h1>
               Lorem ipsum dolor 
-              <a class="botones" id="Registrar" href="form-captain-register.php">Registrar Equipo</a>
+              <a class="botones" id="Registrar" href="form-captain-register-va.php">Registrar Equipo</a>
             </div>
         </div>
     </div>

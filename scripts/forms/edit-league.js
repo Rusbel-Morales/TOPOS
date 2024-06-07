@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const league_name = form.querySelector('[name="league_name"]');
         const date = form.querySelector('[name="date"]');
         const date2 = form.querySelector('[name="date2"]');
+        const type = form.querySelector('[name="type"]');
 
-        if (validateInputs(league_name, date, date2)) {
+        if (validateInputs(league_name, date, date2, type)) {
             form.submit();
         }
     }
@@ -34,11 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Función para validar los inputs
-    const validateInputs = (league_name, date, date2) => {
+    const validateInputs = (league_name, date, date2, type) => {
         let valid = true;
         const league_nameValue = league_name.value.trim();
         const dateValue = date.value.trim();
         const date2Value = date2.value.trim();
+        const typeValue = type.value.trim();
 
         // Validar league_name
         if (league_nameValue === '') {
@@ -76,7 +78,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 setSuccess(date2);
             }
         }
-
+        if (typeValue === '') {
+            setError(type, 'El tipo de la liga es requerida');
+            valid = false;
+        } else {
+            setSuccess(date2);
+        }
+ 
         return valid;
     }
 });

@@ -54,7 +54,7 @@
     <div class="container-fluid d-flex justify-content-center align-items-center margin">
         <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 bg-white p-4 text-center"> 
             <h2> Añadir miembro ⚽ </h2>
-            <form method="post" name="form" action="../../php/add-member-user.php" novalidate>
+            <form method="post" name="form" action="../../php/add-member-user2.php?" novalidate>
                 <input type="hidden" name="id_team" value="<?php echo $id_team; ?>">
                 <div class="form-group mt-3 input-control">
                     <label for="formGroupExampleInput" class="fw-bold mb-1"> Nombre completo </label>
