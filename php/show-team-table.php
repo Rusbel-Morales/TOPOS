@@ -1,7 +1,7 @@
 <?php
     // Eliminar equipo
 
-        # Eliminar una fila según sea correpondiente (SOLO SI LA LIGA NO TIENE NINGÚN EQUIPO) 
+    # Eliminar una fila según sea correpondiente (SOLO SI LA LIGA NO TIENE NINGÚN EQUIPO) 
     $showWarningModal = false;
     $warningTeamName = '';
 

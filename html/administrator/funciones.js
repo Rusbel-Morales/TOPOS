@@ -23,12 +23,13 @@ $('#modificar_adm').click(function (){
         type: 'POST',
         data: recolec,
 
-        success:function(variable){
-            $('#adm').load('../administrator/statistics.php #adm');
+        success:function(response){
+            // Buscar la tabla dentro de la respuesta AJAX y actualizar el contenido de #adm
+            $('#adm').html($(response).find('#adm').html());
             $('#modificar').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
-
         }
     })
 });
+

@@ -63,6 +63,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="statistics.php"> Estadísticas </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link rounded ms-5" style="background: #870f0f; color: #ffffff" aria-current="page" href="../user/index.php"> Cerrar sesión </a>
+                </li>
             </ul>
           </div>
         </div>

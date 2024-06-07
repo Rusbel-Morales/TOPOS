@@ -4,6 +4,7 @@
     <!-- Bootstrap tiene su propia librería de JavaScript  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/MADRIGUERA-LOGO.png">
     <title> Administración de ligas </title>
 
     <!-- Bootstrap designs-->
@@ -24,7 +25,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
+          <a class="navbar-brand" href="https://4868-148-241-225-70.ngrok-free.app/Proyecto%20Topos/html/administrator/admin.php#"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Modo administrador </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -34,10 +35,13 @@
                 <a class="nav-link active" aria-current="page" href="#"> Ligas </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"> Reserva de eventos </a>
+                <a class="nav-link" href="../../eventos/index.php"> Reserva de eventos </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="statistics.php"> Estadísticas </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded ms-5" style="background: #870f0f; color: #ffffff" aria-current="page" href="../user/index.php"> Cerrar sesión </a>
               </li>
             </ul>
           </div>

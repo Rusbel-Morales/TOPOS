@@ -441,7 +441,7 @@ transform: rotateY(180deg);
 .Reservas{
 color: #1e2726;
 width: 100%;
-height: 80vh;
+height: 65vh;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -752,8 +752,8 @@ gap: 15px; /* Reducir el espacio entre tarjetas */
 }
 
 .flip-card {
-width: 300px; /* Reducir aún más el tamaño de las tarjetas para dispositivos móviles */
-height: 240px;
+    width: 17vw;
+    height: 30vh;
 }
 
 .Reservas {
@@ -852,6 +852,25 @@ transition: background-color 0.3s ease; /* Transición suave del color de fondo 
 background-color: #45a049; /* Color de fondo al pasar el mouse */
 
 }
+
+.flip-card-back1 h1 {
+  font-size: .9rem ;
+
+}
+
+
+.flip-card-back2 h1 {
+
+  font-size: 1.2rem ;
+
+}
+
+.flip-card-back3 h1 {
+
+  font-size: 1.2rem ;
+
+}
+
 }
 
 
@@ -1013,8 +1032,8 @@ padding: 12px 24px; /* Padding más grande para el botón */
   }
 
   .flip-card {
-    width: 350px; /* Reducir aún más el tamaño de las tarjetas para dispositivos móviles */
-    height: 260px;
+    width: 17vw;
+    height: 30vh;
   }
 
   .Reservas {
@@ -1027,5 +1046,43 @@ padding: 12px 24px; /* Padding más grande para el botón */
       width: 3vw; /* Ajusta el ancho del botón */
     
   }
+}
+.flip-card-back1 h1 {
+  font-size: 1.2rem ;
+  
+
+}
+
+.flip-card-back1 {
+  font-size: .8rem;
+}
+
+
+
+.flip-card-back2 h1 {
+
+  font-size: 1.2rem ;
+
+}
+
+
+.flip-card-back2 {
+  font-size: .8rem;
+}
+
+.flip-card-back3 h1 {
+
+  font-size: 1.2rem ;
+
+}
+
+
+.flip-card-back3 {
+  font-size: .8rem;
+}
+.Reservas{
+  
+  height: 65vh;
+
 }
 }

@@ -76,7 +76,7 @@
 
   <h1 id="tit">INICIA LA EMOCION</h1> <!-- PENSAR ALGO DESPUES  -->  
 
-  <h1 id="insana">Resultados previos</h1>
+  <h1 id="insana">Resultados previos</h1>   
   <div class="container">
    
 	
@@ -177,7 +177,7 @@
 
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="flip-card-front" style="background-image: url('../../images/Futbol-Topos-FC.png');">
+            <div class="flip-card-front" style="background-image: url('../../images/M_FEMENIL.jpg');">
               
 
             </div>
@@ -192,7 +192,7 @@
 
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="flip-card-front" style="background-image: url('../../images/EQUIPO.png);">
+            <div class="flip-card-front" style="background-image: url('../../images/M_VARONIL.jpg');">
               
 
             </div>
@@ -263,6 +263,42 @@
         </div>
     </div>
     <div class="box">
+        <img src="../../images/DSC_5009.jpg">
+        <div class="img-text">
+            <div class="content">
+                <h2>Algo que decir</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam exceptur</p>
+             </div>
+            </div>
+        </div>
+        <div class="box">
+        <img src="../../images/DSC_5009.jpg">
+        <div class="img-text">
+            <div class="content">
+                <h2>Algo que decir</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam exceptur</p>
+             </div>
+            </div>
+        </div>
+        <div class="box">
+        <img src="../../images/DSC_5009.jpg">
+        <div class="img-text">
+            <div class="content">
+                <h2>Algo que decir</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam exceptur</p>
+             </div>
+            </div>
+        </div>
+        <div class="box">
+        <img src="../../images/DSC_5009.jpg">
+        <div class="img-text">
+            <div class="content">
+                <h2>Algo que decir</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam exceptur</p>
+             </div>
+            </div>
+        </div>
+        <div class="box">
         <img src="../../images/DSC_5009.jpg">
         <div class="img-text">
             <div class="content">

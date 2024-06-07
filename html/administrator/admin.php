@@ -9,161 +9,84 @@ session_start();
     <title>Panel de Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/homepage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
+    <link rel="icon" href="../../images/MADRIGUERA-LOGO.png">
+    
+    
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-left">
-            <li> <img src="../../images/logo.png" alt="Topos FC"></li>
-            <span class="admin-name">Administrador</span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" "> Modo administrador </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="league-admin.php">Ligas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../eventos/index.php">Reserva de eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statistics.php">Estadísticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded ms-5" style="background: #870f0f; color: #ffffff" aria-current="page" href="../user/index.php"> Cerrar sesión </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="navbar-center">
-            <a href="../../html/administrator/team-admin.php">Equipos</a>
-            <a href="../../html/administrator/league-admin.php">Ligas</a>
-            <a href="../../html/administrator/team-member-admin">Jugadores</a>
-            <a href="#">Reservaciones de Cancha</a>
-        </div>
-        <div class="navbar-right">
-            <form action="logout.php" method="post">
-                <button class="logout-button">Cerrar Sesión</button>
-            </form>
-        </div>
-    </nav>
+   </nav>
     <main class="main-content">
         <div class="overlay">
             <?php echo '<h1>Bienvenido, </h1>' . $_SESSION['username']; ?>
         </div>
     </main>
     </section>
+    <section > 
+        
+    </section> 
 
-<section class="estadisticas">
-<h1 id="insana2">  POSICIONES</h1>
+    <section>
+    <div class="content">
+    <div class="container">
 
-  <div class="container mt-5">
-    <table id="tablaequipo" class="table table-striped" style="width:100%">
-        <thead class="bg-warning">
-            <tr>
-                <th>Posición</th>
-                <th>Equipo</th>
-                <th>PJ</th>
-                <th>G</th>
-                <th>E</th>
-                <th >P</th>
-                <th>GF</th>
-                <th>GC</th>
-                <th>DG</th>
-                <th>PTS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            include_once '../../php/conexion.php';
-
-            $objeto = new Conexion();
-            $conexion = $objeto->Conectar();
-
-            $consulta = "SELECT * FROM equipo";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute();
-            $equipo = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach ($equipo as $equipos) {
-            ?>
-            <tr>
-                <td><?php echo $equipos['id_equipo']; ?></td>
-                <td><?php echo $equipos['nombre_equipo']; ?></td>
-                <td><?php echo $equipos['pj']; ?></td>
-                <td><?php echo $equipos['g']; ?></td>
-                <td><?php echo $equipos['e']; ?></td>
-                <td><?php echo $equipos['p']; ?></td>
-                <td><?php echo $equipos['gf']; ?></td>
-                <td><?php echo $equipos['gc']; ?></td>
-                <td><?php echo $equipos['dg']; ?></td>
-                <td><?php echo $equipos['pts']; ?></td>
-            </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
-    
+<div class="card">
+    <div class="personaje">
+        <div class="imagen_personaje"></div>
+        <div class="detalle">
+            <h2>Ligas</h2>
+            <p>Crea una liga con grandes equipos luchando por obtener el campeonato.</p>
+            <a class="btn" href="league-admin.php">Vamos allá!</a>
+        </div>
+    </div>
 </div>
 
-<div id="multi">
-<input class="boton_esta" id="enviar" type="submit" value="Ver estadisticas">
-</div>
-</section>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
-<script src="script.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#tablaequipo').DataTable();
-    });
-</script>
-
-</section>
-
-<section class="ligas">
-<h1 id="insana2">  Ligas</h1>
-
-  <div class="container mt-5">
-    <table id="tablaliga" class="table table-striped" style="width:100%">
-        <thead class="bg-warning">
-            <tr>
-                <th>Posición</th>
-                <th>Equipo</th>
-                <th>PJ</th>
-                <th>G</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            include_once '../../php/databases.php';
-
-            $objeto = new Conexion();
-            $conexion = $objeto->Conectar();
-
-            $consulta = "SELECT * FROM league";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute();
-            $liga = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach ($liga as $ligas) {
-            ?>
-            <tr>
-                <td><?php echo $ligas['id_league']; ?></td>
-                <td><?php echo $ligas['name']; ?></td>
-                <td><?php echo $ligas['date_i']; ?></td>
-                <td><?php echo $ligas['date_e']; ?></td>
-            </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
-    
+<div class="card">
+    <div class="personaje_2">
+        <div class="imagen_personaje_2"></div>
+        <div class="detalle_2">
+            <h2>Reserva-Eventos</h2>
+            <p>Es momento de crear un evento, entra aquí para poder agendarlo</p>
+            <a class="btn" href="../../eventos/index.php">Vamos allá!</a>
+        </div>
+    </div>
 </div>
 
-<div id="multi">
-<input class="boton_esta" id="enviar" type="submit" value="Ver ligas">
+<div class="card">
+    <div class="personaje_3">
+        <div class="imagen_personaje_3"></div>
+        <div class="detalle_3">
+            <h2>Estadisticas</h2>
+            <p>Los jugadores han luchado mucho, registra cada unos de sus logros en este apartado.</p>
+            <a class="btn" href="statistics.php">Vamos allá!</a>
+        </div>
+    </div>
 </div>
-</section>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
-<script src="script.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#tablaliga').DataTable();
-    });
-</script>
+</div>
+</div>
+</section> 
 
 </body>
 </html>
