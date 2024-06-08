@@ -86,7 +86,7 @@
             
           </tr>
         </table>
-        <form><button type="submit" class="button">Enviar</button></form>
+        <button type="submit" class="button">Enviar</button>
       </form>
     </div>
     <div class="column">

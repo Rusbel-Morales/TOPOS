@@ -143,7 +143,7 @@
                 <div class="form-group mt-5"> 
                     <div class="row justify-content-center"> 
                         <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center">
-                            <img src="../../Images/EQUIPO.png" alt="EQUIPO" class="img-fluid" width="400" height="300">
+                            <img src="../../images/EQUIPO.png" alt="EQUIPO" class="img-fluid" width="400" height="300">
                         </div>
                     </div>
                 </div>

@@ -101,7 +101,7 @@
             <body>
                 <p> Hola, mi nombre es {$full_name} y quiero invitarte a que seas parte de mi equipo de futbol: {$team_name} 😎⚽. </p>
                 <p> Solo necesitas dar click en el siguiente botón: </p>
-                <a href='https://59d3-148-241-225-70.ngrok-free.app/Proyecto Topos/html/user/member-register-user2.php?id_team={$id_team}' class='button'> Unirse al equipo </a>
+                <a href='http://10.50.70.236/TC2005B_601_07/Proyecto-Topos/html/user/member-register-user2.php?id_team={$id_team}' class='button'> Unirse al equipo </a>
                 <p> Si no obtengo respuestas de tu parte en los próximos días invitaré a otras personas. </p>
             </body>
             </html>";

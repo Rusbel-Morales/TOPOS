@@ -1,8 +1,8 @@
 <?php
-date_default_timezone_set("America/Bogota");
+date_default_timezone_set("America/Mexico");
 setlocale(LC_ALL, "es_ES");
 
-require("config.php");
+require("../php/databases.php");
 
 $evento = ucwords($_REQUEST['evento']);
 $fecha_inicio = $_REQUEST['fecha_inicio'];
@@ -11,11 +11,11 @@ $color_evento = $_REQUEST['color_evento'];
 
 // Verificar si hay eventos superpuestos
 $checkOverlap = "SELECT * FROM reserva WHERE (fecha_inicio < '$fecha_fin') AND (fecha_fin > '$fecha_inicio')";
-$resultOverlap = mysqli_query($con, $checkOverlap);
+$resultOverlap = mysqli_query($conn, $checkOverlap);
 
 if (mysqli_num_rows($resultOverlap) > 0) {
     // Hay superposición
-    header("Location:index.php?e=2"); // Puedes cambiar este valor para mostrar un mensaje de error específico
+    header("Location: index.php?e=2"); // Puedes cambiar este valor para mostrar un mensaje de error específico
     exit();
 } else {
     // No hay superposición, insertar nuevo evento
@@ -25,9 +25,9 @@ if (mysqli_num_rows($resultOverlap) > 0) {
         '$evento', '$fecha_inicio', '$fecha_fin', '$color_evento'
     )";
 
-    $resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);
+    $resultadoNuevoEvento = mysqli_query($conn, $InsertNuevoEvento);
 
-    header("Location:index.php?e=1");
+    header("Location: index.php?e=1");
     exit();
 }
 ?>

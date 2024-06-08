@@ -35,10 +35,10 @@
 </nav>
 </header>
 <?php
-include('config.php');
+include('../php/databases.php');
 
   $SqlEventos   = ("SELECT * FROM reserva");
-  $resulEventos = mysqli_query($con, $SqlEventos);
+  $resulEventos = mysqli_query($conn, $SqlEventos);
 
 ?>
 

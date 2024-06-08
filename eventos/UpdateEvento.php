@@ -2,7 +2,7 @@
 date_default_timezone_set("America/Mexico");
 setlocale(LC_ALL,"es_ES");
 
-include('config.php');
+include('../php/databases.php');
                         
 $idEvento         = $_POST['idEvento'];
 
@@ -22,7 +22,7 @@ $UpdateProd = ("UPDATE eventoscalendar
         fecha_fin ='$fecha_fin',
         color_evento ='$color_evento'
     WHERE id='".$idEvento."' ");
-$result = mysqli_query($con, $UpdateProd);
+$result = mysqli_query($conn, $UpdateProd);
 
 header("Location:index.php?ea=1");
 ?>

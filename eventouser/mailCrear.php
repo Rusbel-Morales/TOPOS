@@ -1,8 +1,8 @@
 <?php
-date_default_timezone_set("America/Bogota");
+date_default_timezone_set("America/Mexico");
 setlocale(LC_ALL,"es_ES");
 
-require("config.php");
+require "../php/databases.php";
 require '../phpmailer/Exception.php';
 require '../phpmailer/PHPMailer.php';
 require '../phpmailer/SMTP.php';
@@ -36,7 +36,7 @@ $InsertSolicitud = "INSERT INTO solicitud(
       '". $fecha_inicio."',
       '" .$fecha_fin. "'
   )";
-$resultadoSolicitud = mysqli_query($con, $InsertSolicitud);
+$resultadoSolicitud = mysqli_query($conn, $InsertSolicitud);
 
 $mail = new PHPMailer(true);
 
@@ -45,8 +45,8 @@ try {
     $mail->isSMTP();                                            
     $mail->Host       = 'smtp.gmail.com';                     
     $mail->SMTPAuth   = true;                                   
-    $mail->Username   = 'rusbelmoralesmendez@gmail.com';                     
-    $mail->Password   = 'cmrn ftud tndl nroq';                               
+    $mail->Username   = 'rodolfoperezrodriguez848@gmail.com';                     
+    $mail->Password   = 'zuvk wewm iktj yjwt';                               
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
     $mail->Port       = 465;                                    
 
@@ -81,10 +81,10 @@ try {
         </body>
         </html>";
     
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->AltBody = 'Reserva de cancha';
     $mail->send();
     echo 'Mensaje enviado con éxito';
-    header("Location:calendariouser.php?e=1");
+    header("Location: calendariouser.php?e=1");
     exit();
 } 
 catch (Exception $e) {

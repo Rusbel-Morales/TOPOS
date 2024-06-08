@@ -49,8 +49,22 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand"> <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Administración de equipo </a>
+            <a class="navbar-brand">
+                <img src="../../images/MADRIGUERA-LOGO.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Administración de equipo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link rounded me-5 px-5" style="background: #870f0f; color: #ffffff;" aria-current="page" href="../../html/user/index.php">Salir</a>
+                </li>
+            </ul>
+        </div>
     </nav>
+
 
     <!-- Contenedor principal -->
     <div class="container-fluid pt-3 mt-5 text-center">

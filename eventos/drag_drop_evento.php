@@ -2,7 +2,7 @@
 date_default_timezone_set("America/Bogota");
 setlocale(LC_ALL,"es_ES");
 
-include('config.php');
+include('../php/databases.php');
                         
 $idEvento         = $_POST['idEvento'];
 $start            = $_REQUEST['start'];
@@ -17,6 +17,6 @@ $UpdateProd = ("UPDATE reserva
         fecha_fin ='$fecha_fin'
 
     WHERE id='".$idEvento."' ");
-$result = mysqli_query($con, $UpdateProd);
+$result = mysqli_query($conn, $UpdateProd);
 
 ?>

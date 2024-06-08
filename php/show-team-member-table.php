@@ -134,6 +134,7 @@ if ($stmt->execute()) {
                                         </div>
                                         <div class="error"> </div>
                                     </div>
+                                    <div class="form-group mt-3 input-control">
                                         <label class="fw-bold mb-1"> ¿Cómo se enteró de la Liga "Madriguera"? </label>
                                         <div class="row justify-content-center">
                                             <div class="col-9">
@@ -146,6 +147,7 @@ if ($stmt->execute()) {
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
                                     <input type="hidden" name="editMember" value="<?php echo $row['id_team_member']; ?>">
                                     <input type="hidden" name="id_team" value="<?php echo $id_team; ?>">
                                 </form>
