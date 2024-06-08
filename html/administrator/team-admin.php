@@ -31,6 +31,8 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title> <?php echo $league_name; ?> </title>
+      <link rel="icon" href="../../images/MADRIGUERA-LOGO.png">
+
       <!-- Bootstrap designs-->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -57,10 +59,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Ligas</a>
+                        <a class="nav-link active" aria-current="page" href="league-admin.php">Ligas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reserva de eventos</a>
+                        <a class="nav-link" href="../../eventos/index.php">Reserva de eventos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="statistics.php">Estadísticas</a>

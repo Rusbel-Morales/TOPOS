@@ -3,12 +3,14 @@
   margin: 0 auto;
 }
 
-#title{
-  color: #9c27b0;
-  font-weight: 800;
-  border-bottom: 3px solid coral;
-  background: #ccc;
-  padding: 8px 30px;
+#title {
+  color: #333; /* Color del texto (negro suave) */
+  font-weight: 600; /* Grosor del texto */
+  border: 3px solid #eee; /* Recuadro gris muy claro */
+  padding: 12px 30px; /* Espaciado interno */
+  background: #f9f9f9; /* Fondo gris claro */
+  border-radius: 5px; /* Borde redondeado */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 /****************/

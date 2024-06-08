@@ -1044,6 +1044,10 @@ padding: 12px 24px; /* Padding más grande para el botón */
     gap: 15px; /* Reducir el espacio entre tarjetas */
   }
 
+  .izquierda a{
+    padding: 10px;
+  }
+
   .flip-card {
     width: 17vw;
     height: 30vh;

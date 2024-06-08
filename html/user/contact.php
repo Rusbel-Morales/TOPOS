@@ -7,23 +7,34 @@
 <link rel="icon" href="../../images/MADRIGUERA-LOGO.png">
 <title>Topos</title>
   <meta charset="UTF-8">
+  <style>
+    .data p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.data i {
+    margin-right: 8px;
+}
+
+  </style>
 </head>
 <body>
-<header class="pag1">
 <nav class="nav-bar">
   <ul id="nav-list">
   <div class="izquierda">
       <li> <img src="../../images/MADRIGUERA-LOGO.png" alt="Topos FC"></li>
       <li> <a href="index.php"> Inicio </a> </li>
-      <li> <a href="../../eventouser/calendario.php"> Calendario y Reservas </a> </li>
+      <li> <a href="../../eventouser/calendariouser.php"> Calendario y Reservas </a> </li>
       <li> <a href="contact.php"> Contactanos </a> </li>
       </div>
       <div id="derecha_b">
         <a class="boton_nav" href="../administrator/login.html">¿Eres administrador?</a>
       </div>
   </ul>
-  
 </nav>
+<header class="pag1">
 </header>
 
 <section class="fondo">
@@ -32,15 +43,16 @@
         <div class="box-info">
             <h1>CONTÁCTATE CON NOSOTROS</h1>
             <div class="data">
-                <p><i class="fa-solid fa-phone"></i> 222 234 23 2321</p>
-                <p><i class="fa-solid fa-envelope"></i> contacto@toposfc.org</p>
-                <p><i class="fa-solid fa-location-dot"></i> "Madriguera": Calle 5 A SUr 13926, Col. San Juan Bautista, Puebla, Pue. C.P. 72495</p>
+              <p><i class="fa-solid fa-phone"></i> 222 234 23 2321</p>
+              <p><i class="fa-solid fa-envelope"></i> contacto@toposfc.org</p>
+              <p><i class="fa-solid fa-location-dot"></i> "Madriguera": Calle 5 A Sur 13926, Col. San Juan Bautista, Puebla, Pue. C.P. 72495</p>
             </div>
-            <div class="links">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+
+            <div class="links" style="margin-top: 200px">
+                <a href="https://www.facebook.com/ToposFCPuebla/?locale=es_LA"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/toposfcpuebla/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/ToposFCPuebla"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/toposfcpuebla/?originalSubdomain=mx"><i class="fa-brands fa-linkedin"></i></a>
             </div>
         </div>
 

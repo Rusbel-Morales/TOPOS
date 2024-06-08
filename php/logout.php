@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("../html/administrator/login.html");
+header("../html/user/index.php");
 exit();
 ?>

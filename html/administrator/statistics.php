@@ -29,7 +29,7 @@
                         <a class="nav-link" href="../../eventos/index.php">Reserva de eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Estadísticas</a>
+                        <a class="nav-link active" aria-current="page" href="statistics.php">Estadísticas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rounded ms-5" style="background: #870f0f; color: #ffffff" aria-current="page" href="../user/index.php"> Cerrar sesión </a>
@@ -235,7 +235,7 @@
 
                         <div class="row justify-content-center mt-4">
                             <div class="col d-flex justify-content-center">
-                                <button class="btn btn-primary" type="button" onclick="agregarGol()">Agregar registro de gol ⚽</button>
+                                <!-- <button class="btn btn-primary" type="button" onclick="agregarGol()">Agregar registro de gol ⚽</button> -->
                             </div>
                         </div>
                         <button class="btn btn-success mt-5" type="submit"><i class="bi bi-check-circle-fill me-1"></i> Agregar partido </button>

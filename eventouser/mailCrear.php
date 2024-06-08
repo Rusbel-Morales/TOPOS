@@ -41,7 +41,7 @@ $resultadoSolicitud = mysqli_query($con, $InsertSolicitud);
 $mail = new PHPMailer(true);
 
 try {
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+    $mail->SMTPDebug = 0;                      
     $mail->isSMTP();                                            
     $mail->Host       = 'smtp.gmail.com';                     
     $mail->SMTPAuth   = true;                                   
@@ -84,11 +84,10 @@ try {
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
     echo 'Mensaje enviado con éxito';
-    header("Location:index.php?e=1");
+    header("Location:calendariouser.php?e=1");
     exit();
 } 
 catch (Exception $e) {
     echo "No se ha podido enviar el mensaje. Mailer Error: {$mail->ErrorInfo}";
 }
-header("Location:index.php?e=1");
 ?>

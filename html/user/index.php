@@ -19,7 +19,7 @@
   <div class="izquierda">
       <li> <img src="../../images/MADRIGUERA-LOGO.png" alt="Topos FC"></li>
       <li> <a href="index.php"> Inicio </a> </li>
-      <li> <a href="../../eventouser/calendario.php"> Calendario y Reservas </a> </li>
+      <li> <a href="../../eventouser/calendariouser.php"> Calendario y Reservas </a> </li>
       <li> <a href="contact.php"> Contactanos </a> </li>
       </div>
       <div id="derecha_b">
@@ -180,7 +180,7 @@
             <div class="flip-card-back2">
               <h1>Liga masculina</h1>
               Registra tu equipo para las ligas y torneos para género masculino.
-              <a class="botones" id="Registrar" href="form-captain-register-fe.php">Registrar Equipo</a>
+              <a class="botones" id="Registrar" href="form-captain-register-va.php">Registrar Equipo</a>
             </div>
         </div>
     </div>
@@ -195,7 +195,7 @@
             <div class="flip-card-back2">
               <h1>Liga femenina</h1>
               Registra tu equipo para las ligas y torneos para género femenino.
-              <a class="botones" id="Registrar" href="form-captain-register-va.php">Registrar Equipo</a>
+              <a class="botones" id="Registrar" href="form-captain-register-fe.php">Registrar Equipo</a>
             </div>
         </div>
     </div>
@@ -337,7 +337,7 @@
         </div>
     </div>
     <div class="box">
-        <img src="../../images/DSC_5009.jpg">
+        <img src="../../images/7.jpg">
         <div class="img-text">
             <div class="content">
                 <h2>Algo que decir</h2>
@@ -346,7 +346,7 @@
             </div>
         </div>
         <div class="box">
-        <img src="../../images/DSC_5009.jpg">
+        <img src="../../images/8.jpg">
         <div class="img-text">
             <div class="content">
                 <h2>Algo que decir</h2>
@@ -355,7 +355,7 @@
             </div>
         </div>
         <div class="box">
-        <img src="../../images/DSC_5009.jpg">
+        <img src="../../images/12.jpg">
         <div class="img-text">
             <div class="content">
                 <h2>Algo que decir</h2>
@@ -364,7 +364,7 @@
             </div>
         </div>
         <div class="box">
-        <img src="../../images/DSC_5009.jpg">
+        <img src="../../images/DSC_5103.JPG">
         <div class="img-text">
             <div class="content">
                 <h2>Algo que decir</h2>
@@ -373,7 +373,7 @@
             </div>
         </div>
         <div class="box">
-        <img src="../../images/DSC_5009.jpg">
+        <img src="../../images/DSC_5151.JPG">
         <div class="img-text">
             <div class="content">
                 <h2>Algo que decir</h2>

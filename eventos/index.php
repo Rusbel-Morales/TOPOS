@@ -31,7 +31,7 @@
                         <a class="nav-link" href="../html/administrator/league-admin.php">Ligas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Reserva de eventos</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Reserva de eventos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"  href="../html/administrator/league-admin.php">Estadísticas</a>
