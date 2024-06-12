@@ -34,7 +34,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Reserva de eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="../html/administrator/league-admin.php">Estadísticas</a>
+                        <a class="nav-link"  href="../html/administrator/statistics.php">Estadísticas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rounded ms-5" style="background: #870f0f; color: #ffffff" aria-current="page" href="../html/user/index.php"> Cerrar sesión </a>
