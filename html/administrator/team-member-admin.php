@@ -55,10 +55,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"> Ligas </a>
+                <a class="nav-link active" aria-current="page" href="league-admin.php"> Ligas </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"> Reserva de eventos </a>
+                <a class="nav-link" href="../../eventos/index.php"> Reserva de eventos </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="statistics.php"> Estadísticas </a>
