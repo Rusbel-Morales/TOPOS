@@ -12,14 +12,13 @@ function modificar(arreglo){
     $("#gc_").val(cadena[8]);
     $("#dg_").val(cadena[9]);
     $("#pts_").val(cadena[10]);
-    
 }
 
 $('#modificar_adm').click(function (){
     var recolec = $('#for_adm').serialize();
     alert(recolec);
     $.ajax({
-        url:'../administrator/adm_mod.php',
+        url:'../administrator/adm_mod.php   ',
         type: 'POST',
         data: recolec,
 
@@ -32,4 +31,3 @@ $('#modificar_adm').click(function (){
         }
     })
 });
-
