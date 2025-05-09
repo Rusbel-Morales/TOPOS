@@ -38,6 +38,6 @@ Entre mis responsabilidades destacaron:
 ## 👥 Autores del proyecto
 
 - **Rusbel Alejandro Morales Méndez** – [GitHub](#) *(este perfil)*  
-- **Diego Javier Solórzano Trinidad** – [GitHub](#)  
-- **Gadiro Cano Sánchez** – [GitHub](#)  
-- **Fernando Maggi Llerandi** – [GitHub](#)
+- **Diego Javier Solórzano Trinidad** – [GitHub](https://github.com/Diegosoltri)  
+- **Gadiro Cano Sánchez** – [GitHub](https://github.com/GadiroC)  
+- **Fernando Maggi Llerandi** – [GitHub](https://github.com/FMaggo)
