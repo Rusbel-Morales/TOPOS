@@ -1,43 +1,43 @@
 # TOPOS  
-**Aplicación web desarrollada en el semestre FJ2024**
+**Web application developed in the FJ2024 semester**
 
-**TOPOS** es una plataforma web diseñada para fortalecer la comunidad de personas con discapacidad visual en el estado de Puebla a través del deporte, en particular el fútbol. Su objetivo principal es fomentar la inclusión social mediante la práctica deportiva, así como mejorar las instalaciones del campamento a través de la renta de canchas y la gestión eficiente de torneos.
+**TOPOS** is a web platform designed to strengthen the community of visually impaired individuals in the state of Puebla through sports, particularly football (soccer). Its main goal is to promote social inclusion through sports practice, as well as improve camp facilities through field rentals and efficient tournament management.
 
-La aplicación permite a los usuarios acceder a información relevante sobre el campamento, reservar canchas de fútbol y consultar estadísticas de torneos en tiempo real. Además, ofrece un sistema de administración completo para registrar participantes, equipos, resultados, goles y posiciones de los partidos que vayan surgiendo.
+The application allows users to access relevant information about the camp, book football fields, and view real-time tournament statistics. It also offers a complete administration system to register participants, teams, match results, goals, and standings.
 
-## 🧑‍💻 Rol en el proyecto
+## 🧑‍💻 Role in the project
 
-Participé como:
+I participated as:
 
-- **Administrador de base de datos**  
-- **Desarrollador backend**  
-- **Desarrollador frontend**  
+- **Database Administrator**  
+- **Backend Developer**  
+- **Frontend Developer**  
 
-Entre mis responsabilidades destacaron:
+My responsibilities included:
 
-- Implementación de la lógica del servidor.  
-- Diseño y gestión del modelo de datos relacional.  
-- Desarrollo del panel de administración del sitio.
+- Implementation of server-side logic.  
+- Design and management of the relational data model.  
+- Development of the site's admin panel.
 
-## 🛠 Tecnologías utilizadas en el proyecto
+## 🛠 Technologies used in the project
 
-- **PHP** – Lógica del lado del servidor.
-- **JavaScript** – Manipulación dinámica del DOM.
-- **MySQL** – Sistema de gestión de bases de datos.  
-- **Bootstrap** – Framework CSS para diseño responsivo.  
-- **HTML** – Estructura y marcado del contenido.
+- **PHP** – Server-side logic.
+- **JavaScript** – Dynamic DOM manipulation.
+- **MySQL** – Database management system.  
+- **Bootstrap** – CSS framework for responsive design.  
+- **HTML** – Structure and markup of content.
 
-## ✅ Funcionalidades desarrolladas
+## ✅ Features developed
 
-- Sistema de **reserva de canchas** con selección de horarios y confirmación por correo electrónico.
-- **Gestión de estadísticas** de partidos en tiempo real.
-- **Inicio de sesión** seguro para acceso al panel administrativo.
-- Registro de **equipos y jugadores** participantes.
-- Visualización de la **tabla general** del torneo con estadísticas como goles a favor y en contra.
+- **Field booking system** with schedule selection and email confirmation.
+- **Real-time match statistics** management.
+- Secure **sign-in system** for admin panel access.
+- Registration of **teams and participating players**.
+- Display of the **tournament leaderboard** with stats such as goals for and against.
 
-## 👥 Autores del proyecto
+## 👥 Project authors
 
-- **Rusbel Alejandro Morales Méndez** – [GitHub](#) *(este perfil)*  
+- **Rusbel Alejandro Morales Méndez** – [GitHub](#) *(this profile)*  
 - **Diego Javier Solórzano Trinidad** – [GitHub](https://github.com/Diegosoltri)  
 - **Gadiro Cano Sánchez** – [GitHub](https://github.com/GadiroC)  
 - **Fernando Maggi Llerandi** – [GitHub](https://github.com/FMaggo)
